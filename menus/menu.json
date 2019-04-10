@@ -1,0 +1,14 @@
+{
+  "menu": [
+    {
+      "id": "tools",
+      "submenu": [
+        {
+          "label": "Export to seed",
+          "id": "tool.exportseed",
+          "command": "seed:export-seed"
+        }
+      ]
+    }
+  ]
+}
