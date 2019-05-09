@@ -4,9 +4,9 @@
       "id": "tools",
       "submenu": [
         {
-          "label": "Export to seed",
-          "id": "tool.exportseed",
-          "command": "seed:export-seed"
+          "label": "Seed builder",
+          "id": "tool.buildseed",
+          "command": "seed:build-seed"
         }
       ]
     }
