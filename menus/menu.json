@@ -4,7 +4,7 @@
       "id": "tools",
       "submenu": [
         {
-          "label": "Seed builder",
+          "label": "Seed Builder",
           "id": "tool.buildseed",
           "command": "seed:build-seed"
         }
