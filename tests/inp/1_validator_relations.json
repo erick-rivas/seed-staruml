@@ -1,0 +1,22 @@
+{
+  "user": {
+    "team": "0..*"
+  },
+  "team": {
+    "user": "0..*",
+    "player": "0..*",
+    "match": "0..*"
+  },
+  "player": {
+    "team": "1",
+    "score": "0..*"
+  },
+  "match": {
+    "team": "1",
+    "score": "0..*"
+  },
+  "score": {
+    "player": "1",
+    "match": "1"
+  }
+}

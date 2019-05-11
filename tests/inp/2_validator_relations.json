@@ -1,0 +1,8 @@
+{
+  "user": {
+    "team": "duplicated"
+  },
+  "team": {
+    "user": "duplicated"
+  }
+}

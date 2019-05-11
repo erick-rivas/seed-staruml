@@ -1,0 +1,112 @@
+[
+  [{
+    "name": "user",
+    "attrs": [{
+      "name": "email",
+      "type": "string",
+      "meta": "length: 512"
+    }, {
+      "name": "password",
+      "type": "string",
+      "meta": "length: 256"
+    }, {
+      "name": "teams",
+      "type": "team[]",
+      "meta": ""
+    }],
+    "meta": ""
+  }, {
+    "name": "team",
+    "attrs": [{
+      "name": "name",
+      "type": "string",
+      "meta": "length: 256"
+    }, {
+      "name": "logo_url",
+      "type": "string",
+      "meta": "length: 512"
+    }, {
+      "name": "players",
+      "type": "player[]",
+      "meta": ""
+    }],
+    "meta": ""
+  }, {
+    "name": "player",
+    "attrs": [{
+      "name": "name",
+      "type": "string",
+      "meta": "length: 256"
+    }, {
+      "name": "photo_url",
+      "type": "string",
+      "meta": "length: 512"
+    }, {
+      "name": "team",
+      "type": "team",
+      "meta": ""
+    }],
+    "meta": ""
+  }, {
+    "name": "match",
+    "attrs": [{
+      "name": "date",
+      "type": "date",
+      "meta": ""
+    }, {
+      "name": "type",
+      "type": "enum",
+      "meta": "options: [Friendship, League, Cup]"
+    }, {
+      "name": "local",
+      "type": "team",
+      "meta": ""
+    }, {
+      "name": "visitor",
+      "type": "team",
+      "meta": ""
+    }, {
+      "name": "scores",
+      "type": "score[]",
+      "meta": ""
+    }],
+    "meta": ""
+  }, {
+    "name": "score",
+    "attrs": [{
+      "name": "min",
+      "type": "int",
+      "meta": ""
+    }, {
+      "name": "player",
+      "type": "player",
+      "meta": ""
+    }, {
+      "name": "match",
+      "type": "match",
+      "meta": ""
+    }],
+    "meta": ""
+  }], {
+    "user": {
+      "team": "0..*"
+    },
+    "team": {
+      "user": "0..*",
+      "player": "0..*",
+      "match": "0..*"
+    },
+    "player": {
+      "team": "1",
+      "score": "0..*"
+    },
+    "match": {
+      "team": "1",
+      "score": "0..*"
+    },
+    "score": {
+      "player": "1",
+      "match": "1"
+    }
+  }
+]

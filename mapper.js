@@ -36,8 +36,14 @@ function getRelations(dModels, dRelations)
     let model2 = stdName(rels.end2.reference.name);
     let card1 = rels.end1.cardinality;
     let card2 = rels.end2.cardinality;
-    relations[model1][model2] = card2;
-    relations[model2][model1] = card1;
+    if (relations[model1][model2] != null) {
+      relations[model1][model2] = "duplicated";
+      relations[model2][model1] = "duplicated";
+    }
+    else {
+      relations[model1][model2] = card2;
+      relations[model2][model1] = card1;
+    }
   }
   return relations;
 }

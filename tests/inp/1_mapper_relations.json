@@ -1,0 +1,618 @@
+[{
+    "_id": "AAAAAAFp1dFfVMAAZOY=",
+    "name": "",
+    "documentation": "",
+    "tags": [],
+    "end1": {
+      "_id": "AAAAAAFp1dFfVcABvXE=",
+      "name": "",
+      "documentation": "",
+      "tags": [],
+      "reference": {
+        "_id": "AAAAAAFp1c6hRb8q0MQ=",
+        "name": "TEAM",
+        "documentation": "",
+        "tags": [],
+        "columns": [{
+            "_id": "AAAAAAFp1c7OR783Pmk=",
+            "name": "name",
+            "documentation": "length: 256",
+            "tags": [],
+            "type": "string",
+            "length": 0,
+            "primaryKey": false,
+            "foreignKey": false,
+            "referenceTo": null,
+            "nullable": false,
+            "unique": false
+          },
+          {
+            "_id": "AAAAAAFp1c7+1L8+pdQ=",
+            "name": "logo_url",
+            "documentation": "length: 512",
+            "tags": [],
+            "type": "string",
+            "length": 0,
+            "primaryKey": false,
+            "foreignKey": false,
+            "referenceTo": null,
+            "nullable": false,
+            "unique": false
+          },
+          {
+            "_id": "AAAAAAFp1c8rer9FAjg=",
+            "name": "players",
+            "documentation": "",
+            "tags": [],
+            "type": "Player[]",
+            "length": 0,
+            "primaryKey": false,
+            "foreignKey": false,
+            "referenceTo": null,
+            "nullable": false,
+            "unique": false
+          }
+        ]
+      },
+      "cardinality": "0..*"
+    },
+    "end2": {
+      "_id": "AAAAAAFp1dFfVcACHr0=",
+      "name": "",
+      "documentation": "",
+      "tags": [],
+      "reference": {
+        "_id": "AAAAAAFp1c4Hz78HiDo=",
+        "name": "USER",
+        "documentation": "",
+        "tags": [],
+        "columns": [{
+            "_id": "AAAAAAFp1c4n3L8Uf7Y=",
+            "name": "email",
+            "documentation": "length: 512",
+            "tags": [],
+            "type": "string",
+            "length": 0,
+            "primaryKey": false,
+            "foreignKey": false,
+            "referenceTo": null,
+            "nullable": false,
+            "unique": false
+          },
+          {
+            "_id": "AAAAAAFp1c5RmL8bdAA=",
+            "name": "password",
+            "documentation": "length: 256",
+            "tags": [],
+            "type": "string",
+            "length": 0,
+            "primaryKey": false,
+            "foreignKey": false,
+            "referenceTo": null,
+            "nullable": false,
+            "unique": false
+          },
+          {
+            "_id": "AAAAAAFp1c6Ckr8il6c=",
+            "name": "teams",
+            "documentation": "",
+            "tags": [],
+            "type": "Team[]",
+            "length": 0,
+            "primaryKey": false,
+            "foreignKey": false,
+            "referenceTo": null,
+            "nullable": false,
+            "unique": false
+          }
+        ]
+      },
+      "cardinality": "0..*"
+    },
+    "identifying": true
+  },
+  {
+    "_id": "AAAAAAFp1dGeccAVeYQ=",
+    "name": "",
+    "documentation": "",
+    "tags": [],
+    "end1": {
+      "_id": "AAAAAAFp1dGeccAWyCs=",
+      "name": "",
+      "documentation": "",
+      "tags": [],
+      "reference": {
+        "_id": "AAAAAAFp1c6hRb8q0MQ=",
+        "name": "TEAM",
+        "documentation": "",
+        "tags": [],
+        "columns": [{
+            "_id": "AAAAAAFp1c7OR783Pmk=",
+            "name": "name",
+            "documentation": "length: 256",
+            "tags": [],
+            "type": "string",
+            "length": 0,
+            "primaryKey": false,
+            "foreignKey": false,
+            "referenceTo": null,
+            "nullable": false,
+            "unique": false
+          },
+          {
+            "_id": "AAAAAAFp1c7+1L8+pdQ=",
+            "name": "logo_url",
+            "documentation": "length: 512",
+            "tags": [],
+            "type": "string",
+            "length": 0,
+            "primaryKey": false,
+            "foreignKey": false,
+            "referenceTo": null,
+            "nullable": false,
+            "unique": false
+          },
+          {
+            "_id": "AAAAAAFp1c8rer9FAjg=",
+            "name": "players",
+            "documentation": "",
+            "tags": [],
+            "type": "Player[]",
+            "length": 0,
+            "primaryKey": false,
+            "foreignKey": false,
+            "referenceTo": null,
+            "nullable": false,
+            "unique": false
+          }
+        ]
+      },
+      "cardinality": "1"
+    },
+    "end2": {
+      "_id": "AAAAAAFp1dGeccAXNGo=",
+      "name": "",
+      "documentation": "",
+      "tags": [],
+      "reference": {
+        "_id": "AAAAAAFp1c9Yyb9NIQc=",
+        "name": "PLAYER",
+        "documentation": "",
+        "tags": [],
+        "columns": [{
+            "_id": "AAAAAAFp1c+Fsb9aic8=",
+            "name": "name",
+            "documentation": "length: 256",
+            "tags": [],
+            "type": "string",
+            "length": 0,
+            "primaryKey": false,
+            "foreignKey": false,
+            "referenceTo": null,
+            "nullable": false,
+            "unique": false
+          },
+          {
+            "_id": "AAAAAAFp1c+WGL9hBSI=",
+            "name": "photo_url",
+            "documentation": "length: 512",
+            "tags": [],
+            "type": "string",
+            "length": 0,
+            "primaryKey": false,
+            "foreignKey": false,
+            "referenceTo": null,
+            "nullable": false,
+            "unique": false
+          },
+          {
+            "_id": "AAAAAAFqm+iZWBbDziQ=",
+            "name": "team",
+            "documentation": "",
+            "tags": [],
+            "type": "Team",
+            "length": 0,
+            "primaryKey": false,
+            "foreignKey": false,
+            "referenceTo": null,
+            "nullable": false,
+            "unique": false
+          }
+        ]
+      },
+      "cardinality": "0..*"
+    },
+    "identifying": true
+  },
+  {
+    "_id": "AAAAAAFp5PxxlRV5+c0=",
+    "name": "",
+    "documentation": "",
+    "tags": [],
+    "end1": {
+      "_id": "AAAAAAFp5PxxlRV68x4=",
+      "name": "",
+      "documentation": "",
+      "tags": [],
+      "reference": {
+        "_id": "AAAAAAFp1c6hRb8q0MQ=",
+        "name": "TEAM",
+        "documentation": "",
+        "tags": [],
+        "columns": [{
+            "_id": "AAAAAAFp1c7OR783Pmk=",
+            "name": "name",
+            "documentation": "length: 256",
+            "tags": [],
+            "type": "string",
+            "length": 0,
+            "primaryKey": false,
+            "foreignKey": false,
+            "referenceTo": null,
+            "nullable": false,
+            "unique": false
+          },
+          {
+            "_id": "AAAAAAFp1c7+1L8+pdQ=",
+            "name": "logo_url",
+            "documentation": "length: 512",
+            "tags": [],
+            "type": "string",
+            "length": 0,
+            "primaryKey": false,
+            "foreignKey": false,
+            "referenceTo": null,
+            "nullable": false,
+            "unique": false
+          },
+          {
+            "_id": "AAAAAAFp1c8rer9FAjg=",
+            "name": "players",
+            "documentation": "",
+            "tags": [],
+            "type": "Player[]",
+            "length": 0,
+            "primaryKey": false,
+            "foreignKey": false,
+            "referenceTo": null,
+            "nullable": false,
+            "unique": false
+          }
+        ]
+      },
+      "cardinality": "1"
+    },
+    "end2": {
+      "_id": "AAAAAAFp5PxxlRV79KE=",
+      "name": "",
+      "documentation": "",
+      "tags": [],
+      "reference": {
+        "_id": "AAAAAAFp1c/CSr9onRY=",
+        "name": "MATCH",
+        "documentation": "",
+        "tags": [],
+        "columns": [{
+            "_id": "AAAAAAFp1c/LTr91k/w=",
+            "name": "date",
+            "documentation": "",
+            "tags": [],
+            "type": "date",
+            "length": 0,
+            "primaryKey": false,
+            "foreignKey": false,
+            "referenceTo": null,
+            "nullable": false,
+            "unique": false
+          },
+          {
+            "_id": "AAAAAAFqoLAlEUcyaLU=",
+            "name": "type",
+            "documentation": "options: [Friendship, League, Cup]",
+            "tags": [],
+            "type": "enum",
+            "length": 0,
+            "primaryKey": false,
+            "foreignKey": false,
+            "referenceTo": null,
+            "nullable": false,
+            "unique": false
+          },
+          {
+            "_id": "AAAAAAFp1dAoq799NxQ=",
+            "name": "local",
+            "documentation": "",
+            "tags": [],
+            "type": "Team",
+            "length": 0,
+            "primaryKey": false,
+            "foreignKey": false,
+            "referenceTo": null,
+            "nullable": false,
+            "unique": false
+          },
+          {
+            "_id": "AAAAAAFp1dA5JL+ELuo=",
+            "name": "visitor",
+            "documentation": "",
+            "tags": [],
+            "type": "Team",
+            "length": 0,
+            "primaryKey": false,
+            "foreignKey": false,
+            "referenceTo": null,
+            "nullable": false,
+            "unique": false
+          },
+          {
+            "_id": "AAAAAAFp1dBJd7+L8AE=",
+            "name": "scores",
+            "documentation": "",
+            "tags": [],
+            "type": "Score[]",
+            "length": 0,
+            "primaryKey": false,
+            "foreignKey": false,
+            "referenceTo": null,
+            "nullable": false,
+            "unique": false
+          }
+        ]
+      },
+      "cardinality": "0..*"
+    },
+    "identifying": true
+  },
+  {
+    "_id": "AAAAAAFp5Pw4GBVdi2Y=",
+    "name": "",
+    "documentation": "",
+    "tags": [],
+    "end1": {
+      "_id": "AAAAAAFp5Pw4GBVeSm8=",
+      "name": "",
+      "documentation": "",
+      "tags": [],
+      "reference": {
+        "_id": "AAAAAAFp1c9Yyb9NIQc=",
+        "name": "PLAYER",
+        "documentation": "",
+        "tags": [],
+        "columns": [{
+            "_id": "AAAAAAFp1c+Fsb9aic8=",
+            "name": "name",
+            "documentation": "length: 256",
+            "tags": [],
+            "type": "string",
+            "length": 0,
+            "primaryKey": false,
+            "foreignKey": false,
+            "referenceTo": null,
+            "nullable": false,
+            "unique": false
+          },
+          {
+            "_id": "AAAAAAFp1c+WGL9hBSI=",
+            "name": "photo_url",
+            "documentation": "length: 512",
+            "tags": [],
+            "type": "string",
+            "length": 0,
+            "primaryKey": false,
+            "foreignKey": false,
+            "referenceTo": null,
+            "nullable": false,
+            "unique": false
+          },
+          {
+            "_id": "AAAAAAFqm+iZWBbDziQ=",
+            "name": "team",
+            "documentation": "",
+            "tags": [],
+            "type": "Team",
+            "length": 0,
+            "primaryKey": false,
+            "foreignKey": false,
+            "referenceTo": null,
+            "nullable": false,
+            "unique": false
+          }
+        ]
+      },
+      "cardinality": "1"
+    },
+    "end2": {
+      "_id": "AAAAAAFp5Pw4GRVfv5E=",
+      "name": "",
+      "documentation": "",
+      "tags": [],
+      "reference": {
+        "_id": "AAAAAAFp1dBuub+TIX4=",
+        "name": "SCORE",
+        "documentation": "",
+        "tags": [],
+        "columns": [{
+            "_id": "AAAAAAFp1dCIv7+gkBQ=",
+            "name": "min",
+            "documentation": "",
+            "tags": [],
+            "type": "int",
+            "length": 0,
+            "primaryKey": false,
+            "foreignKey": false,
+            "referenceTo": null,
+            "nullable": false,
+            "unique": false
+          },
+          {
+            "_id": "AAAAAAFp1dCydL+n0Tc=",
+            "name": "player",
+            "documentation": "",
+            "tags": [],
+            "type": "Player",
+            "length": 0,
+            "primaryKey": false,
+            "foreignKey": false,
+            "referenceTo": null,
+            "nullable": false,
+            "unique": false
+          },
+          {
+            "_id": "AAAAAAFqm+jNoxbKH5s=",
+            "name": "match",
+            "documentation": "",
+            "tags": [],
+            "type": "Match",
+            "length": 0,
+            "primaryKey": false,
+            "foreignKey": false,
+            "referenceTo": null,
+            "nullable": false,
+            "unique": false
+          }
+        ]
+      },
+      "cardinality": "0..*"
+    },
+    "identifying": true
+  },
+  {
+    "_id": "AAAAAAFp1dH4eMA+Dz8=",
+    "name": "",
+    "documentation": "",
+    "tags": [],
+    "end1": {
+      "_id": "AAAAAAFp1dH4eMA/fJ8=",
+      "name": "",
+      "documentation": "",
+      "tags": [],
+      "reference": {
+        "_id": "AAAAAAFp1c/CSr9onRY=",
+        "name": "MATCH",
+        "documentation": "",
+        "tags": [],
+        "columns": [{
+            "_id": "AAAAAAFp1c/LTr91k/w=",
+            "name": "date",
+            "documentation": "",
+            "tags": [],
+            "type": "date",
+            "length": 0,
+            "primaryKey": false,
+            "foreignKey": false,
+            "referenceTo": null,
+            "nullable": false,
+            "unique": false
+          },
+          {
+            "_id": "AAAAAAFqoLAlEUcyaLU=",
+            "name": "type",
+            "documentation": "options: [Friendship, League, Cup]",
+            "tags": [],
+            "type": "enum",
+            "length": 0,
+            "primaryKey": false,
+            "foreignKey": false,
+            "referenceTo": null,
+            "nullable": false,
+            "unique": false
+          },
+          {
+            "_id": "AAAAAAFp1dAoq799NxQ=",
+            "name": "local",
+            "documentation": "",
+            "tags": [],
+            "type": "Team",
+            "length": 0,
+            "primaryKey": false,
+            "foreignKey": false,
+            "referenceTo": null,
+            "nullable": false,
+            "unique": false
+          },
+          {
+            "_id": "AAAAAAFp1dA5JL+ELuo=",
+            "name": "visitor",
+            "documentation": "",
+            "tags": [],
+            "type": "Team",
+            "length": 0,
+            "primaryKey": false,
+            "foreignKey": false,
+            "referenceTo": null,
+            "nullable": false,
+            "unique": false
+          },
+          {
+            "_id": "AAAAAAFp1dBJd7+L8AE=",
+            "name": "scores",
+            "documentation": "",
+            "tags": [],
+            "type": "Score[]",
+            "length": 0,
+            "primaryKey": false,
+            "foreignKey": false,
+            "referenceTo": null,
+            "nullable": false,
+            "unique": false
+          }
+        ]
+      },
+      "cardinality": "1"
+    },
+    "end2": {
+      "_id": "AAAAAAFp1dH4eMBA7U0=",
+      "name": "",
+      "documentation": "",
+      "tags": [],
+      "reference": {
+        "_id": "AAAAAAFp1dBuub+TIX4=",
+        "name": "SCORE",
+        "documentation": "",
+        "tags": [],
+        "columns": [{
+            "_id": "AAAAAAFp1dCIv7+gkBQ=",
+            "name": "min",
+            "documentation": "",
+            "tags": [],
+            "type": "int",
+            "length": 0,
+            "primaryKey": false,
+            "foreignKey": false,
+            "referenceTo": null,
+            "nullable": false,
+            "unique": false
+          },
+          {
+            "_id": "AAAAAAFp1dCydL+n0Tc=",
+            "name": "player",
+            "documentation": "",
+            "tags": [],
+            "type": "Player",
+            "length": 0,
+            "primaryKey": false,
+            "foreignKey": false,
+            "referenceTo": null,
+            "nullable": false,
+            "unique": false
+          },
+          {
+            "_id": "AAAAAAFqm+jNoxbKH5s=",
+            "name": "match",
+            "documentation": "",
+            "tags": [],
+            "type": "Match",
+            "length": 0,
+            "primaryKey": false,
+            "foreignKey": false,
+            "referenceTo": null,
+            "nullable": false,
+            "unique": false
+          }
+        ]
+      },
+      "cardinality": "0..*"
+    },
+    "identifying": true
+  }
+]

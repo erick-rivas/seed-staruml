@@ -1,0 +1,28 @@
+[{
+    "name": "user",
+    "attrs": [{
+      "name": "name",
+      "type": "string",
+      "meta": {
+        "length": "512"
+      },
+      "read": true,
+      "write": true,
+      "depth": 1,
+      "is_fk": false,
+      "cardinality": ""
+    }],
+    "meta": {},
+    "read": true,
+    "write": true,
+    "depth": 1
+  },
+  {
+    "name": "team",
+    "attrs": [],
+    "meta": {},
+    "read": true,
+    "write": true,
+    "depth": 1
+  }
+]
