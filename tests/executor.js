@@ -19,6 +19,10 @@ function exec(f, inp, out)
     try {
       let act = f.apply(this, ins)
       if (objectEquals(exp, act)) passes++;
+      else {
+        console.log("=== OUTPUT: ")
+        console.log(JSON.stringify(act, null, 4))
+      }
     } catch (e) {
       console.log(e);
     }

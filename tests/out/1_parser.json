@@ -10,7 +10,7 @@
     "write": true,
     "depth": 1,
     "is_fk": false,
-    "cardinality": ""
+    "card": {}
   }, {
     "name": "password",
     "type": "string",
@@ -21,7 +21,7 @@
     "write": true,
     "depth": 1,
     "is_fk": false,
-    "cardinality": ""
+    "card": {}
   }, {
     "name": "teams",
     "type": "team[]",
@@ -30,7 +30,10 @@
     "write": true,
     "depth": 1,
     "is_fk": true,
-    "cardinality": "0..*-0..*"
+    "card": {
+      "ref": "0..*",
+      "has": "0..*"
+    }
   }],
   "meta": {},
   "read": true,
@@ -48,7 +51,7 @@
     "write": true,
     "depth": 1,
     "is_fk": false,
-    "cardinality": ""
+    "card": {}
   }, {
     "name": "logo_url",
     "type": "string",
@@ -59,7 +62,7 @@
     "write": true,
     "depth": 1,
     "is_fk": false,
-    "cardinality": ""
+    "card": {}
   }, {
     "name": "players",
     "type": "player[]",
@@ -68,7 +71,10 @@
     "write": true,
     "depth": 1,
     "is_fk": true,
-    "cardinality": "0..*-1"
+    "card": {
+      "ref": "0..*",
+      "has": "1"
+    }
   }],
   "meta": {},
   "read": true,
@@ -86,7 +92,7 @@
     "write": true,
     "depth": 1,
     "is_fk": false,
-    "cardinality": ""
+    "card": {}
   }, {
     "name": "photo_url",
     "type": "string",
@@ -97,7 +103,7 @@
     "write": true,
     "depth": 1,
     "is_fk": false,
-    "cardinality": ""
+    "card": {}
   }, {
     "name": "team",
     "type": "team",
@@ -106,7 +112,10 @@
     "write": true,
     "depth": 1,
     "is_fk": true,
-    "cardinality": "1-0..*"
+    "card": {
+      "ref": "1",
+      "has": "0..*"
+    }
   }],
   "meta": {},
   "read": true,
@@ -122,7 +131,7 @@
     "write": true,
     "depth": 1,
     "is_fk": false,
-    "cardinality": ""
+    "card": {}
   }, {
     "name": "type",
     "type": "enum",
@@ -133,7 +142,7 @@
     "write": true,
     "depth": 1,
     "is_fk": false,
-    "cardinality": ""
+    "card": {}
   }, {
     "name": "local",
     "type": "team",
@@ -142,7 +151,10 @@
     "write": true,
     "depth": 1,
     "is_fk": true,
-    "cardinality": "1-0..*"
+    "card": {
+      "ref": "1",
+      "has": "0..*"
+    }
   }, {
     "name": "visitor",
     "type": "team",
@@ -151,7 +163,10 @@
     "write": true,
     "depth": 1,
     "is_fk": true,
-    "cardinality": "1-0..*"
+    "card": {
+      "ref": "1",
+      "has": "0..*"
+    }
   }, {
     "name": "scores",
     "type": "score[]",
@@ -160,7 +175,10 @@
     "write": true,
     "depth": 1,
     "is_fk": true,
-    "cardinality": "0..*-1"
+    "card": {
+      "ref": "0..*",
+      "has": "1"
+    }
   }],
   "meta": {},
   "read": true,
@@ -176,7 +194,7 @@
     "write": true,
     "depth": 1,
     "is_fk": false,
-    "cardinality": ""
+    "card": {}
   }, {
     "name": "player",
     "type": "player",
@@ -185,7 +203,10 @@
     "write": true,
     "depth": 1,
     "is_fk": true,
-    "cardinality": "1-0..*"
+    "card": {
+      "ref": "1",
+      "has": "0..*"
+    }
   }, {
     "name": "match",
     "type": "match",
@@ -194,7 +215,10 @@
     "write": true,
     "depth": 1,
     "is_fk": true,
-    "cardinality": "1-0..*"
+    "card": {
+      "ref": "1",
+      "has": "0..*"
+    }
   }],
   "meta": {},
   "read": true,

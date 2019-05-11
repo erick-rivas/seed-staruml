@@ -25,7 +25,7 @@ function parseMeta(meta)
           `"${String(p.split(":")[1]).trim()}",`
       }
       if (metaJson.endsWith(","))
-          metaJson = metaJson.substring(0, metaJson.length - 1);
+        metaJson = metaJson.substring(0, metaJson.length - 1);
       res = JSON.parse(`{${metaJson}}`);
       for (let m in res) {
         if (res[m].startsWith("[")) {
@@ -41,7 +41,7 @@ function parseMeta(meta)
   return res;
 }
 
-function parseDefaults(models)
+function parseDefs(models)
 {
   for (let model of models) {
     mMeta = model.meta;
@@ -88,10 +88,13 @@ function parseFks(model, attr, relations)
     let c1 = relations[aType][mName]
     let c2 = relations[mName][aType]
     attr.is_fk = true;
-    attr.cardinality = c2 + "-" + c1;
+    attr.card = {
+      ref: c2,
+      has: c1
+    };
   } else {
     attr.is_fk = false;
-    attr.cardinality = "";
+    attr.card = {};
   }
 }
 
@@ -109,9 +112,8 @@ function walk(func, models, relations)
 function parse(models, relations)
 {
   models = parseMetas(models);
-  models = parseDefaults(models);
   models = walk(parseFks, models, relations);
-  console.log(JSON.stringify(models));
+  models = parseDefs(models);
   return models;
 }
 
