@@ -93,6 +93,22 @@ function parseOverr(entity, metas)
   return entity;
 }
 
+function parseDefs(model, attr, relations)
+{
+  let aType = attr.type.replace("[]", "");
+  let def = null;
+  if (aType == "date") def = "now"
+  if (aType == "boolean") def = "false"
+  if (attr.meta.default != null) {
+    def = attr.meta.def;
+    delete attr.meta.def;
+  }
+  
+  if (def != null) {
+    attr.def = def
+  }
+}
+
 function parseFks(model, attr, relations)
 {
   let aType = attr.type.replace("[]", "");
@@ -124,6 +140,7 @@ function walk(func, models, relations)
 function parse(models, relations)
 {
   models = parseMetas(models);
+  models = walk(parseDefs, models, relations);
   models = walk(parseFks, models, relations);
   models = parseOverride(models);
   return models;

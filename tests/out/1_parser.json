@@ -104,6 +104,7 @@
   "attrs": [{
     "name": "date",
     "type": "date",
+    "def": "now",
     "meta": {},
     "read": true,
     "write": true,
