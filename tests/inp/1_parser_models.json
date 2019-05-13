@@ -1,17 +1,9 @@
 [{
   "name": "user",
   "attrs": [{
-    "name": "email",
-    "type": "string",
-    "meta": "length: 512"
-  }, {
-    "name": "password",
-    "type": "string",
-    "meta": "length: 256"
-  }, {
     "name": "teams",
     "type": "team[]",
-    "meta": ""
+    "meta": "write:false"
   }],
   "meta": ""
 }, {
@@ -27,7 +19,7 @@
   }, {
     "name": "players",
     "type": "player[]",
-    "meta": ""
+    "meta": "write:false"
   }],
   "meta": ""
 }, {
@@ -67,7 +59,7 @@
   }, {
     "name": "scores",
     "type": "score[]",
-    "meta": ""
+    "meta": "write:false"
   }],
   "meta": ""
 }, {

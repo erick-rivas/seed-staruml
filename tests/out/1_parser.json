@@ -1,33 +1,11 @@
 [{
   "name": "user",
   "attrs": [{
-    "name": "email",
-    "type": "string",
-    "meta": {
-      "length": "512"
-    },
-    "read": true,
-    "write": true,
-    "depth": 1,
-    "is_fk": false,
-    "card": {}
-  }, {
-    "name": "password",
-    "type": "string",
-    "meta": {
-      "length": "256"
-    },
-    "read": true,
-    "write": true,
-    "depth": 1,
-    "is_fk": false,
-    "card": {}
-  }, {
     "name": "teams",
     "type": "team[]",
     "meta": {},
     "read": true,
-    "write": true,
+    "write": false,
     "depth": 1,
     "is_fk": true,
     "card": {
@@ -68,7 +46,7 @@
     "type": "player[]",
     "meta": {},
     "read": true,
-    "write": true,
+    "write": false,
     "depth": 1,
     "is_fk": true,
     "card": {
@@ -172,7 +150,7 @@
     "type": "score[]",
     "meta": {},
     "read": true,
-    "write": true,
+    "write": false,
     "depth": 1,
     "is_fk": true,
     "card": {

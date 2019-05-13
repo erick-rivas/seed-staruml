@@ -41,21 +41,23 @@ function parseMeta(meta)
   return res;
 }
 
-function parseDefs(models)
+function parseOverride(models)
 {
   for (let model of models) {
     mMeta = model.meta;
     attrs = model.attrs;
-    model = parseDefault(model, mMeta);
+    model = parseOverr(model, mMeta);
     for (let attr of attrs) {
       aMeta = attr.meta;
-      attr = parseDefault(attr, aMeta);
+      attr = parseOverr(attr, aMeta);
     }
   }
   return models;
 }
 
-function parseDefault(entity, metas)
+
+
+function parseOverr(entity, metas)
 {
   entity.read = true;
   entity.write = true;
@@ -68,16 +70,26 @@ function parseDefault(entity, metas)
       entity.depth = metas.depth
     delete metas.depth
   }
-  if (metas.read_only != null) {
-    if (metas.read_only == "true")
-      entity.write = false;
-    delete metas.read_only;
+  if (metas.read != null) {
+    entity.read = metas.read == "true";
+    delete metas.read;
   }
-  if (metas.write_only != null) {
-    if (metas.write_only == "true")
-      entity.write = false;
-    delete metas.write_only;
+
+  if (metas.write != null) {
+    entity.write = metas.write == "true";
+    delete metas.write;
   }
+
+  if (metas.card_ref != null) {
+    entity.card.ref = metas.card_ref;
+    delete metas.card_ref;
+  }
+
+  if (metas.card_has != null) {
+    entity.card.has = metas.card_has;
+    delete metas.card_has;
+  }
+
   return entity;
 }
 
@@ -113,7 +125,7 @@ function parse(models, relations)
 {
   models = parseMetas(models);
   models = walk(parseFks, models, relations);
-  models = parseDefs(models);
+  models = parseOverride(models);
   return models;
 }
 
