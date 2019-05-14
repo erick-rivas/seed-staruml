@@ -1,19 +1,6 @@
-function parseMetas(models)
+function parseMeta(entity)
 {
-  for (let model of models) {
-    mMeta = model.meta;
-    attrs = model.attrs;
-    model.meta = parseMeta(mMeta);
-    for (let attr of attrs) {
-      aMeta = attr.meta;
-      attr.meta = parseMeta(aMeta);
-    }
-  }
-  return models;
-}
-
-function parseMeta(meta)
-{
+  let meta = entity.meta;
   let res = null
   if (meta != "") {
     try {
@@ -38,32 +25,18 @@ function parseMeta(meta)
       }
     } catch (e) { res = null; }
   } else res = {};
-  return res;
+  entity.meta = res;
 }
 
-function parseOverride(models)
+function parseOverr(entity)
 {
-  for (let model of models) {
-    mMeta = model.meta;
-    attrs = model.attrs;
-    model = parseOverr(model, mMeta);
-    for (let attr of attrs) {
-      aMeta = attr.meta;
-      attr = parseOverr(attr, aMeta);
-    }
-  }
-  return models;
-}
+  metas = entity.meta;
 
-
-
-function parseOverr(entity, metas)
-{
   entity.read = true;
   entity.write = true;
   entity.depth = 1
 
-  if (metas == null) return entity;
+  if (metas == null) return;
 
   if (metas.depth != null) {
     if (!Number.isNaN(parseInt(metas.depth)))
@@ -93,7 +66,7 @@ function parseOverr(entity, metas)
   return entity;
 }
 
-function parseDefs(model, attr, relations)
+function parseDefs(attr)
 {
   let aType = attr.type.replace("[]", "");
   let def = null;
@@ -103,13 +76,13 @@ function parseDefs(model, attr, relations)
     def = attr.meta.def;
     delete attr.meta.def;
   }
-  
+
   if (def != null) {
     attr.def = def
   }
 }
 
-function parseFks(model, attr, relations)
+function parseFks(attr, relations)
 {
   let aType = attr.type.replace("[]", "");
   if (relations[mName][aType]) {
@@ -126,23 +99,24 @@ function parseFks(model, attr, relations)
   }
 }
 
-function walk(func, models, relations)
+function walk(modelFunc, attrFunc, models, relations)
 {
   for (let model of models) {
     mName = model.name;
     attrs = model.attrs;
+    if (modelFunc != null) modelFunc(model, relations)
     for (let attr of attrs)
-      func(model, attr, relations);
+      if (attrFunc != null) attrFunc(attr, relations);
   }
   return models
 }
 
 function parse(models, relations)
 {
-  models = parseMetas(models);
-  models = walk(parseDefs, models, relations);
-  models = walk(parseFks, models, relations);
-  models = parseOverride(models);
+  models = walk(parseMeta, parseMeta, models, relations);
+  models = walk(null, parseDefs, models, relations);
+  models = walk(null, parseFks, models, relations);
+  models = walk(parseOverr, parseOverr, models, relations);
   return models;
 }
 

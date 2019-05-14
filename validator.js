@@ -1,36 +1,38 @@
 function validateAttrs(models)
 {
   let validTypes = ["int", "string", "date", "boolean", "float", "enum", "text"]
+
   for (let model of models) {
     let mName = model.name;
     let attrs = model.attrs;
     if (model.meta == null)
       return `Invalid metadata model (${mName})<br/>TIP: Use format:<br/>name:value<br/>name:value`
+
     for (let attr of attrs) {
-      
+
       if (attr.is_fk == false &&
         validTypes.indexOf(attr.type) == -1)
         return `Invalid type or missing relation (${mName}.${attr.name}=${attr.type})<br/>Valid types: ${validTypes}`
-      
-        if (attr.meta == null)
+
+      if (attr.meta == null)
         return `Invalid metadata (${mName}.${attr.name})<br/>TIP: Use format:<br/>name:value`
-      
-        if (attr.type == "string") {
+
+      if (attr.type == "string") {
         if (attr.meta.length == null)
-          return `Include length meta in string(${mName}.${attr.name}) `
+          return `Include 'length' meta in string(${mName}.${attr.name}) `
         if (Number.isNaN(parseInt(attr.meta.length)))
-          return `Invalid length meta in string(${mName}.${attr.name}=${attr.meta.length}) `
+          return `Invalid 'length' meta in string(${mName}.${attr.name}=${attr.meta.length}) `
       }
 
       if (attr.type == "enum") {
         if (!Array.isArray(attr.meta.options))
-          return `Include options meta in enum (${mName}.${attr.name})<br/>Example:<br/>options:[b,c]`
+          return `Include 'options' meta in enum (${mName}.${attr.name})<br/>Example:<br/>options:[b,c]`
       }
 
-      if (attr.is_fk == true && attr.card.ref == "0..*" 
-          && !attr.type.endsWith("[]"))
-          return `Include '[]' in attribute type of 0..* any relations (${mName}.${attr.name})`
-        
+      if (attr.is_fk == true && attr.card.ref == "0..*"
+        && !attr.type.endsWith("[]"))
+        return `Include '[]' in attribute type of 0..* any relations (${mName}.${attr.name})`
+
     }
   }
   return "";
@@ -61,8 +63,6 @@ function validateFks(models, relations)
   }
   return ""
 }
-
-
 
 function validate(models, relations)
 {
