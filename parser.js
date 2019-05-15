@@ -99,6 +99,31 @@ function parseFks(attr, relations)
   }
 }
 
+function parseViews(model, relations)
+{
+  const c = require("./const")
+  meta = model.meta
+  views = []
+  if (typeof meta.views === 'string') {
+    if (meta.views == "all")
+      views = c.readOnlyViews.concat(c.writeOnlyViews);
+    else if (meta.views == "read_only")
+      views = c.readOnlyViews
+    else if (meta.views == "write_only")
+      views = c.writeOnlyViews
+    else
+      views = null
+    delete meta.views
+  }
+
+  if (Array.isArray(meta.views)) {
+    views = meta.views
+    delete meta.views
+  }
+
+  model.views = views
+}
+
 function walk(modelFunc, attrFunc, models, relations)
 {
   for (let model of models) {
@@ -116,6 +141,7 @@ function parse(models, relations)
   models = walk(parseMeta, parseMeta, models, relations);
   models = walk(null, parseDefs, models, relations);
   models = walk(null, parseFks, models, relations);
+  models = walk(parseViews, null, models, relations);
   models = walk(parseOverr, parseOverr, models, relations);
   return models;
 }

@@ -1,12 +1,20 @@
 function validateAttrs(models)
 {
-  let validTypes = ["int", "string", "date", "boolean", "float", "enum", "text"]
+  const c = require("./const")
+  validViews = c.readOnlyViews.concat(c.writeOnlyViews);
+  validTypes = c.nativeTypes;
 
   for (let model of models) {
     let mName = model.name;
     let attrs = model.attrs;
     if (model.meta == null)
       return `Invalid metadata model (${mName})<br/>TIP: Use format:<br/>name:value<br/>name:value`
+
+    if (model.views != null){
+      for (let view of model.views)
+        if (validViews.indexOf(view) == -1)
+          return `Invalid view (${mName}=${view})<br/>Valid views: ${validViews}`
+    }else return `Invalid view group (${mName}=${view})<br/>Valid view groups: 'all', 'read_only', 'write_only'`
 
     for (let attr of attrs) {
 
