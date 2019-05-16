@@ -4,7 +4,7 @@ function exec(f, inp, out)
   let testI = 1;
   let passes = 0;
 
-  
+
   while (true) {
 
     let ins = [];
@@ -12,7 +12,7 @@ function exec(f, inp, out)
       i = i.replace("\%s", testI);
       ins.push(JSON.parse(fs.readFileSync(i)));
     }
-    
+
     let o = out.replace("\%s", testI)
     let exp = JSON.parse(fs.readFileSync(o))
 
@@ -20,8 +20,8 @@ function exec(f, inp, out)
       let act = f.apply(this, ins)
       if (objectEquals(exp, act)) passes++;
       else {
-        console.log("=== OUTPUT: ")
-        console.log(JSON.stringify(act, null, 4))
+        console.log("Check 'tmp' folder to see actual value")
+        fs.writeFileSync("tmp/failed_" + testI + ".json", JSON.stringify(act, null, 4))
       }
     } catch (e) {
       console.log(e);

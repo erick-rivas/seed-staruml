@@ -3,7 +3,7 @@
   "attrs": [{
     "name": "teams",
     "type": "team[]",
-    "meta": "write:false"
+    "meta": ""
   }],
   "meta": "views: all"
 }, {
@@ -19,7 +19,7 @@
   }, {
     "name": "players",
     "type": "player[]",
-    "meta": "write:false"
+    "meta": ""
   }],
   "meta": ""
 }, {
@@ -59,7 +59,7 @@
   }, {
     "name": "scores",
     "type": "score[]",
-    "meta": "write:false"
+    "meta": ""
   }],
   "meta": "views: read_only"
 }, {

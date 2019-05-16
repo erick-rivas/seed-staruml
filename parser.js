@@ -32,10 +32,6 @@ function parseOverr(entity)
 {
   metas = entity.meta;
 
-  entity.read = true;
-  entity.write = true;
-  entity.depth = 1
-
   if (metas == null) return;
 
   if (metas.depth != null) {
@@ -66,8 +62,10 @@ function parseOverr(entity)
   return entity;
 }
 
-function parseDefs(attr)
+function parseDefAttr(attr)
 {
+
+  //Def Value
   let aType = attr.type.replace("[]", "");
   let def = null;
   if (aType == "date") def = "now"
@@ -76,10 +74,22 @@ function parseDefs(attr)
     def = attr.meta.def;
     delete attr.meta.def;
   }
-
-  if (def != null) {
+  if (def != null)
     attr.def = def
-  }
+
+  //Default props
+  attr.read = true;
+  attr.write = true;
+  attr.depth = 1
+  if (attr.is_fk && attr.card.ref == "0..*")
+    attr.write = false;
+}
+
+function parseDefModel(model)
+{
+  model.read = true;
+  model.write = true;
+  model.depth = 1
 }
 
 function parseFks(attr, relations)
@@ -139,8 +149,9 @@ function walk(modelFunc, attrFunc, models, relations)
 function parse(models, relations)
 {
   models = walk(parseMeta, parseMeta, models, relations);
-  models = walk(null, parseDefs, models, relations);
   models = walk(null, parseFks, models, relations);
+  models = walk(null, parseDefAttr, models, relations);
+  models = walk(parseDefModel, null, models, relations);
   models = walk(parseViews, null, models, relations);
   models = walk(parseOverr, parseOverr, models, relations);
   return models;
