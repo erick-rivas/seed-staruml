@@ -1,5 +1,5 @@
-readOnlyViews = ["table", "list", "filter", "search", "item"]
-writeOnlyViews = ["form", "options"]
+readOnlyViews = ["list", "details"]
+writeOnlyViews = ["form", "delete"]
 nativeTypes = ["int", "string", "date", "boolean", "float", "enum", "text"]
 
 exports.readOnlyViews = readOnlyViews

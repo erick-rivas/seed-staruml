@@ -14,7 +14,7 @@
     }
   }],
   "meta": {},
-  "views": ["table", "list", "filter", "search", "item", "form", "options"],
+  "views": ["list", "details", "form", "delete"],
   "read": true,
   "write": true,
   "depth": 1
@@ -163,7 +163,7 @@
     }
   }],
   "meta": {},
-  "views": ["table", "list", "filter", "search", "item"],
+  "views": ["list", "details"],
   "read": true,
   "write": true,
   "depth": 1
@@ -204,7 +204,7 @@
     }
   }],
   "meta": {},
-  "views": ["form", "options"],
+  "views": ["form", "delete"],
   "read": true,
   "write": true,
   "depth": 1
