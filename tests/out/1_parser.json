@@ -14,7 +14,7 @@
     }
   }],
   "meta": {},
-  "views": ["list", "details", "form", "delete"],
+  "views": ["list", "details", "form"],
   "read": true,
   "write": true,
   "depth": 1
@@ -204,7 +204,7 @@
     }
   }],
   "meta": {},
-  "views": ["form", "delete"],
+  "views": ["form"],
   "read": true,
   "write": true,
   "depth": 1

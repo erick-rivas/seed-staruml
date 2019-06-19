@@ -1,9 +1,10 @@
+const YAML = require('json2yaml')
+const mapper = require("./mapper")
+const parser = require("./parser")
+const validator = require("./validator")
+
 function getData()
 {
-  const mapper = require("./mapper")
-  const parser = require("./parser")
-  const validator = require("./validator")
-
   const dModels = app.repository.select("@ERDEntity");
   const dRelations = app.repository.select("@ERDRelationship");
   const data = mapper.map(dModels, dRelations);
@@ -16,20 +17,47 @@ function getData()
   return !errors ? res : null;
 }
 
-function exportJSON(data)
+function exportYaml(data, name, platform)
 {
   const fs = require("fs");
-  var filters = [{ name: "Text Files", extensions: ["json"] }];
-  var selected = app.dialogs.showSaveDialog("Export in", "models.json", filters);
-  fs.writeFileSync(selected, JSON.stringify(data, null, 2));
-  app.toast.info("Exported :)");
+  const filters = [{ name: "Text Files", extensions: ["yaml"] }];
+  const selected = app.dialogs.showSaveDialog("Export in", "SeedManifest.yaml", filters);
+  const res = {
+    name: name,
+    platform: platform,
+    models: data
+  }
+  fs.writeFileSync(selected, YAML.stringify(res));
+  app.toast.info("Exported in " + selected);
+}
+
+function selectPlatform(data, name)
+{
+  var options = [
+    { text: "Django", value: "django" },
+    { text: "React JS", value: "reactjs" }
+  ]
+  app.dialogs.showSelectRadioDialog("Select a platform.", options).then(function ({ buttonId, returnValue })
+  {
+    if (buttonId === 'ok')
+      exportYaml(data, name, returnValue)
+  })
+}
+
+function selectName(data)
+{
+  app.dialogs.showTextDialog("Select a project name.", app.project.getProject().name).then(function ({ buttonId, returnValue })
+  {
+    if (buttonId === 'ok')
+      selectPlatform(data, returnValue)
+  })
 }
 
 function build()
 {
   try {
-    let data = getData();
-    if (data != null) exportJSON(data);
+    const data = getData();
+    if (data != null) selectName(data);
   } catch (error) { app.toast.error(error); }
 }
 

@@ -71,11 +71,11 @@ function parseDefAttr(attr)
   if (aType == "date") def = "now"
   if (aType == "boolean") def = "false"
   if (attr.meta.default != null) {
-    def = attr.meta.def;
-    delete attr.meta.def;
+    def = attr.meta.default;
+    delete attr.meta.default;
   }
   if (def != null)
-    attr.def = def
+    attr.default = def
 
   //Default props
   attr.read = true;

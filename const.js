@@ -1,5 +1,5 @@
 readOnlyViews = ["list", "details"]
-writeOnlyViews = ["form", "delete"]
+writeOnlyViews = ["form"]
 nativeTypes = ["int", "string", "date", "boolean", "float", "enum", "text"]
 
 exports.readOnlyViews = readOnlyViews
