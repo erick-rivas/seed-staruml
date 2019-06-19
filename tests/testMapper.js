@@ -1,5 +1,5 @@
 let executor = require("./executor");
-let mapper = require("../mapper")
+let mapper = require("../app/mapper")
 let ins = [
   "./inp/%s_mapper_models.json",
   "./inp/%s_mapper_relations.json"]

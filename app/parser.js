@@ -1,3 +1,5 @@
+const c = require("./const")
+
 function parseMeta(entity)
 {
   let meta = entity.meta;
@@ -111,7 +113,6 @@ function parseFks(attr, relations)
 
 function parseViews(model, relations)
 {
-  const c = require("./const")
   meta = model.meta
   views = []
   if (typeof meta.views === 'string') {

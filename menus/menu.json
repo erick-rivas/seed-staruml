@@ -1,14 +1,10 @@
 {
-  "menu": [
-    {
-      "id": "tools",
-      "submenu": [
-        {
-          "label": "Seed Builder",
-          "id": "tool.buildseed",
-          "command": "seed:build-seed"
-        }
-      ]
-    }
-  ]
+  "menu": [{
+    "id": "tools",
+    "submenu": [{
+      "label": "Seed Builder",
+      "id": "tool.buildseed",
+      "command": "seed:build-seed"
+    }]
+  }]
 }

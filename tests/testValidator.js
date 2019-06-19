@@ -1,5 +1,5 @@
 let executor = require("./executor");
-let validator = require("../validator")
+let validator = require("../app/validator")
 let ins = [
   "./inp/%s_validator_models.json",
   "./inp/%s_validator_relations.json"]

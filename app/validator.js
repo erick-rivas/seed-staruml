@@ -1,6 +1,7 @@
+const c = require("./const")
+
 function validateAttrs(models)
 {
-  const c = require("./const")
   validViews = c.readOnlyViews.concat(c.writeOnlyViews);
   validTypes = c.nativeTypes;
 

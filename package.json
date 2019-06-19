@@ -1,0 +1,13 @@
+{
+  "name": "seed-builder",
+  "title": "Seed builder",
+  "description": "Seed builder extension",
+  "version": "1.0.0",
+  "license": "MIT",
+  "engines": {
+    "staruml": ">=3.0.0"
+  },
+  "dependencies": {
+    "json2yaml": "1.1.0"
+  }
+}

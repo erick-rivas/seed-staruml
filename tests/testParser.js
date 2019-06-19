@@ -1,5 +1,5 @@
 let executor = require("./executor");
-let parser = require("../parser")
+let parser = require("../app/parser")
 let ins = [
   "./inp/%s_parser_models.json",
   "./inp/%s_parser_relations.json"]
