@@ -1,4 +1,4 @@
-const c = require("./const")
+const c = require("./const");
 
 function validateAttrs(models)
 {

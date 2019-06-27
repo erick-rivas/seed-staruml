@@ -21,7 +21,7 @@ function exec(f, inp, out)
       if (objectEquals(exp, act)) passes++;
       else {
         console.log("Check 'tmp' folder to see actual value")
-        fs.writeFileSync("tmp/failed_" + testI + ".json", JSON.stringify(act, null, 4))
+        fs.writeFileSync("tmp/failed_" + testI + ".json", JSON.stringify(act, null, 2))
       }
     } catch (e) {
       console.log(e);

@@ -30,10 +30,79 @@ function parseMeta(entity)
   entity.meta = res;
 }
 
+
+function parseFks(attr, relations)
+{
+  let aType = attr.type.replace("[]", "");
+  if (relations[mName][aType]) {
+    let c1 = relations[aType][mName]
+    let c2 = relations[mName][aType]
+    attr.is_fk = true;
+    attr.card = {
+      ref: c2,
+      has: c1
+    };
+  } else {
+    attr.is_fk = false;
+    attr.card = {};
+  }
+}
+
+function parseDefModel(model)
+{
+  model.read = true;
+  model.write = true;
+  model.depth = 1
+}
+
+function parseViews(model, relations)
+{
+  let meta = model.meta
+  let views = []
+  if (typeof meta.views === "string") {
+    if (meta.views == "all")
+      views = c.readOnlyViews.concat(c.writeOnlyViews);
+    else if (meta.views == "read_only")
+      views = c.readOnlyViews
+    else if (meta.views == "write_only")
+      views = c.writeOnlyViews
+    else
+      views = null
+    delete meta.views
+  }
+  if (Array.isArray(meta.views)) {
+    views = meta.views
+    delete meta.views
+  }
+
+  model.views = views
+}
+
+function parseDefAttr(attr)
+{
+  //Def Value
+  let aType = attr.type.replace("[]", "");
+  let def = null;
+  if (aType == "date") def = "now"
+  if (aType == "boolean") def = "false"
+  if (attr.meta.default != null) {
+    def = attr.meta.default;
+    delete attr.meta.default;
+  }
+  if (def != null)
+    attr.default = def
+
+  //Default props
+  attr.read = true;
+  attr.write = true;
+  attr.depth = 1
+  if (attr.is_fk && attr.card.ref == "0..*")
+    attr.write = false;
+}
+
 function parseOverr(entity)
 {
-  metas = entity.meta;
-
+  let metas = entity.meta;
   if (metas == null) return;
 
   if (metas.depth != null) {
@@ -64,76 +133,6 @@ function parseOverr(entity)
   return entity;
 }
 
-function parseDefAttr(attr)
-{
-
-  //Def Value
-  let aType = attr.type.replace("[]", "");
-  let def = null;
-  if (aType == "date") def = "now"
-  if (aType == "boolean") def = "false"
-  if (attr.meta.default != null) {
-    def = attr.meta.default;
-    delete attr.meta.default;
-  }
-  if (def != null)
-    attr.default = def
-
-  //Default props
-  attr.read = true;
-  attr.write = true;
-  attr.depth = 1
-  if (attr.is_fk && attr.card.ref == "0..*")
-    attr.write = false;
-}
-
-function parseDefModel(model)
-{
-  model.read = true;
-  model.write = true;
-  model.depth = 1
-}
-
-function parseFks(attr, relations)
-{
-  let aType = attr.type.replace("[]", "");
-  if (relations[mName][aType]) {
-    let c1 = relations[aType][mName]
-    let c2 = relations[mName][aType]
-    attr.is_fk = true;
-    attr.card = {
-      ref: c2,
-      has: c1
-    };
-  } else {
-    attr.is_fk = false;
-    attr.card = {};
-  }
-}
-
-function parseViews(model, relations)
-{
-  meta = model.meta
-  views = []
-  if (typeof meta.views === 'string') {
-    if (meta.views == "all")
-      views = c.readOnlyViews.concat(c.writeOnlyViews);
-    else if (meta.views == "read_only")
-      views = c.readOnlyViews
-    else if (meta.views == "write_only")
-      views = c.writeOnlyViews
-    else
-      views = null
-    delete meta.views
-  }
-
-  if (Array.isArray(meta.views)) {
-    views = meta.views
-    delete meta.views
-  }
-
-  model.views = views
-}
 
 function walk(modelFunc, attrFunc, models, relations)
 {

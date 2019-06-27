@@ -1,5 +1,5 @@
-[
-  [{
+{
+  "models": [{
     "name": "user",
     "attrs": [{
       "name": "email",
@@ -87,7 +87,8 @@
       "meta": ""
     }],
     "meta": ""
-  }], {
+  }],
+  "relations": {
     "user": {
       "team": "0..*"
     },
@@ -109,4 +110,4 @@
       "match": "1"
     }
   }
-]
+}

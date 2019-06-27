@@ -57,7 +57,10 @@ function map(dModels, dRelations)
 {
   const models = getModels(dModels);
   const relations = getRelations(dModels, dRelations);
-  return [models, relations];
+  return {
+    models: models,
+    relations: relations
+  };
 }
 
 exports.map = map
