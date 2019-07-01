@@ -52,7 +52,6 @@ function parseDefModel(model)
 {
   model.read = true;
   model.write = true;
-  model.depth = 1
 }
 
 function parseViews(model, relations)
@@ -95,8 +94,9 @@ function parseDefAttr(attr)
   //Default props
   attr.read = true;
   attr.write = true;
-  attr.depth = 1
   if (attr.is_fk && attr.card.ref == "0..*")
+    attr.write = false;
+  if (attr.type == "image[]" || attr.type == "file[]")
     attr.write = false;
 }
 
@@ -105,11 +105,6 @@ function parseOverr(entity)
   let metas = entity.meta;
   if (metas == null) return;
 
-  if (metas.depth != null) {
-    if (!Number.isNaN(parseInt(metas.depth)))
-      entity.depth = metas.depth
-    delete metas.depth
-  }
   if (metas.read != null) {
     entity.read = metas.read == "true";
     delete metas.read;
