@@ -72,6 +72,10 @@ It must follow a json key format
 
 This are the keys (options) enabled by the extension
 
+- group: Define the model group.
+    - Usage: Customize folder structure
+    - default: ""
+
 -  read: Define whether an attribute or model can be read
    -  default: true
 

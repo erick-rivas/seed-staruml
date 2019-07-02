@@ -52,6 +52,7 @@ function parseDefModel(model)
 {
   model.read = true;
   model.write = true;
+  model.group = "";
 }
 
 function parseViews(model, relations)
@@ -113,6 +114,11 @@ function parseOverr(entity)
   if (metas.write != null) {
     entity.write = metas.write == "true";
     delete metas.write;
+  }
+
+  if (metas.group != null) {
+    entity.group = metas.group;
+    delete metas.group;
   }
 
   if (metas.card_ref != null) {
