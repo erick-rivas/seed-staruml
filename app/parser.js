@@ -37,6 +37,8 @@ function parseFks(attr, relations)
   if (relations[mName][aType]) {
     let c1 = relations[aType][mName]
     let c2 = relations[mName][aType]
+    if (attr.meta.ref != null) c1 = attr.meta.ref
+    if (attr.meta.has != null) c2 = attr.meta.has;
     attr.is_fk = true;
     attr.card = {
       ref: c2,

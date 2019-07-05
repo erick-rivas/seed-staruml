@@ -100,6 +100,20 @@ This are the keys (options) enabled by the extension
 -  options: Define the available options of an enum
    > required for all enum attributes
 
+
+### Override metadata
+
+-  ref: Override parent cardinality (N has any)
+    - Usage: Use it when there are two fk with different cardinality
+    - Values: 1 | 0..* 
+    - Default: Graphic cardinality
+
+
+-  to: Override child cardinality (any has N)
+    - Usage: Use it when there are two fk with different cardinality
+    - Values: 1 | 0..*
+    - Default: Graphic cardinality
+
 ### Common errors
 
 -  When delete a relation, press right click and select **delete from model** otherwise it is preserved and could generate duplicates
