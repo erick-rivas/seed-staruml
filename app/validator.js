@@ -9,38 +9,38 @@ function validateAttrs(models)
     let mName = model.name;
     let attrs = model.attrs;
     if (model.meta == null)
-      return `Invalid model metadata<br/>Model: ${mName}<br/>TIP: Use format - name:value`
+      return `Invalid model metadata<br/>${mName}<br/>Use format: <i>name:value</i>`
 
     if (model.views != null) {
       for (let view of model.views)
         if (validViews.indexOf(view) == -1)
-          return `Invalid view<br/>Model: ${mName}<br/>View: ${view}<br/>TIP: Valid views - ${validViews}`
-    } else return `Invalid view group<br/>Model: ${mName}<br/>ViewGroup: ${view}<br/>TIP: Valid viewGroups - 'all', 'read_only', 'write_only'`
+          return `Invalid view<br/><b>${mName}</b> (${view})</b><br/>Valid views: <i>${validViews}</i>`
+    } else return `Invalid view group<br/><b>${mName}</b> (${view})</b><br/>Valid viewGroups <i>'all', 'read_only', 'write_only'</i>`
 
     for (let attr of attrs) {
 
       if (attr.is_fk == false &&
         validTypes.indexOf(attr.type) == -1)
-        return `Invalid type or missing relation<br/>Model: ${mName}<br/>Attribute: ${attr.name}<br/>Type: ${attr.type}<br/>TIP: Valid types - ${validTypes}`
+        return `Invalid type or missing relation<br/><b>${mName} - ${attr.name}</b> (${attr.type})<br/>Valid types: <i>${validTypes}</i>`
 
       if (attr.meta == null)
-        return `Invalid metadata<br/>Model: ${mName}<br/>Attribute: ${attr.name}<br/>TIP: Use format - name:value`
+        return `Invalid metadata<br/><b>${mName} - ${attr.name}</b><br/>Use format: <i>name:value</i>`
 
       if (attr.type == "string") {
         if (attr.meta.length == null)
-          return `Include 'length' meta in string<br/>Model: ${mName}<br/>Attribute: ${attr.name}`
+          return `Include 'length' meta in string<br/><b>${mName} - ${attr.name}</b>`
         if (Number.isNaN(parseInt(attr.meta.length)))
-          return `Invalid 'length' meta in string<br/>Model: ${mName}<br/>Attribute: ${attr.name}<br/>TIP: Example - length: 128"`
+          return `Invalid 'length' meta in string<br/><b>${mName} - ${attr.name}</b><br/>Example: <i>length: 128</i>`
       }
 
       if (attr.type == "enum") {
         if (!Array.isArray(attr.meta.options))
-          return `Include 'options' meta in enum<br/>Model: ${mName}<br/>Attribute: ${attr.name}<br/>Example - options:[b,c]`
+          return `Include 'options' meta in enum<br/><b>${mName} - ${attr.name}</b><br/>Example: <i>options:[b,c]</i>`
       }
 
       if (attr.is_fk == true && attr.card.ref == "0..*"
         && !attr.type.endsWith("[]"))
-        return `Include '[]' in 0..* to any attributes<br/>Model: ${mName}<br/>Attribute: ${attr.name}<br/>TIP: Example - Player[]`
+        return `Include '[]' in 0..* to any attributes<br/><b>${mName} - ${attr.name}</b><br/>Example: <i>Player[]</i>`
     }
   }
   return "";
@@ -48,6 +48,17 @@ function validateAttrs(models)
 
 function validateFks(models, relations)
 {
+
+  function cap(str) 
+  {
+    return str.charAt(0).toUpperCase() + str.slice(1);
+  }
+
+  function tab(num)
+  {
+    return '&nbsp;'.repeat(num);
+  }
+
   for (let r1 in relations) {
     for (let r2 in relations[r1]) {
       if (relations[r1][r2] == "1" && relations[r2][r1] == "0..*") {
@@ -62,9 +73,8 @@ function validateFks(models, relations)
             }
           }
         }
-        if (!has) return `Missing (${r1} - ${r2}) attribute to complete ${relations[r2][r1]} relation <br/>TIP: Add reference attribute<br/>Example - player:Player`
+        if (!has) return `Missing attr to complete relation<br/><b>${cap(r1)} > ${cap(r2)}</b><br/>Fix: <i>Add '${cap(r2)}' attr to '${cap(r1)}' model</i> </i>`
       }
-
 
       if (
         (relations[r1][r2] == "1" && relations[r2][r1] == "1") ||
@@ -92,16 +102,16 @@ function validateFks(models, relations)
         }
         if (!has) {
           if (relations[r2][r1] == "1")
-            return `Missing at least one (${r1} - ${r2}) attribute to complete ${relations[r2][r1]} relation<br/>TIP: Add reference attribute<br/>Example - player:Player`
+            return `Missing at least one attr to complete relation<br/><b>${cap(r1)} > ${cap(r2)}</b><br/>Fix: <i>Add '${cap(r2)}' attr to '${cap(r1)}' model<br/>${tab(12)}or '${cap(r1)}' attr to '${cap(r2)}' model</i>`
           else
-            return `Missing at least one (${r1} - ${r2}) attribute to complete ${relations[r2][r1]} relation<br/>TIP: Add reference attribute<br/>Example - players:Player[]`
+            return `Missing at least one attr to complete relation<br/><b>${cap(r1)} > ${cap(r2)}</b><br/>Fix: <i>Add '${cap(r2)}[]' attr to '${cap(r1)}' model<br/>${tab(12)}or '${cap(r1)}[]' attr to '${cap(r2)}' model</i>`
         }
       }
 
 
 
       if (relations[r1][r2] == "duplicated")
-        return `Double relation definition (${r1} - ${r2})<br/>TIP: 'Delete from model' extra relations`
+        return `Double relation definition<br/><b>${cap(r1)} > ${cap(r2)}</b><br/>Fix: <i>'Delete from model' extra relations</i><br/><i>To set different cardinalities use fk override in metadata (see README)</i>`
     }
   }
   return ""
