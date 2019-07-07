@@ -52,12 +52,16 @@ function parseDefModel(model)
 {
   model.read = true;
   model.write = true;
-  model.empty = false;
+  model.delete = "CASCADE"
   model.group = "";
 }
 
 function parseDefAttr(attr)
 {
+   attr.read = true;
+   attr.write = true;
+   attr.empty = false;
+
   //Def Value
   let aType = attr.type.replace("[]", "");
   let def = null;
@@ -70,9 +74,6 @@ function parseDefAttr(attr)
   if (def != null)
     attr.default = def
 
-  //Default props
-  attr.read = true;
-  attr.write = true;
   if (attr.is_fk && attr.card.ref == "0..*")
     attr.write = false;
   if (attr.type == "image[]" || attr.type == "file[]")
@@ -84,21 +85,42 @@ function parseOverr(entity)
   let metas = entity.meta;
   if (metas == null) return;
 
-  if (metas.read != null) {
+  if (metas.read != null &&
+    (metas.read == "true" || metas.read == "false")) {
     entity.read = metas.read == "true";
     delete metas.read;
   }
 
-  if (metas.write != null) {
+  if (metas.write != null &&
+    (metas.write == "true" || metas.write == "false")) {
     entity.write = metas.write == "true";
     delete metas.write;
   }
 
-  if (metas.empty != null) {
+  if (metas.empty != null &&
+    (metas.empty == "true" || metas.empty == "false")) {
     entity.empty = metas.empty == "true";
     delete metas.empty;
   }
-  
+
+  if (metas.ref != null &&
+    (metas.ref == "1" || metas.ref == "0..*")) {
+    entity.card.ref = metas.ref;
+    delete metas.ref;
+  }
+
+  if (metas.has != null &&
+    (metas.has == "1" || metas.has == "0..*")) {
+    entity.card.has = metas.has;
+    delete metas.has;
+  }
+
+  if (metas.delete != null &&
+    (metas.delete == "CASCADE" || metas.delete == "PROTECT" || metas.delete == "EMPTY")) {
+    entity.card.delete = metas.delete;
+    delete metas.delete;
+  }
+
   if (metas.group != null) {
     entity.group = metas.group;
     delete metas.group;
@@ -112,16 +134,6 @@ function parseOverr(entity)
   if (metas.options != null) {
     entity.options = metas.options;
     delete metas.options;
-  }
-
-  if (metas.ref != null) {
-    entity.card.ref = metas.ref;
-    delete metas.ref;
-  }
-
-  if (metas.has != null) {
-    entity.card.has = metas.has;
-    delete metas.has;
   }
 
   return entity;

@@ -74,27 +74,34 @@ This are the keys (options) enabled by the extension
 
 - group: Define a model group.
     - Usage: Customize folder structure
-    - default: ''
-
--  read: Define whether an attribute or model can be read
-   -  default: true
-
--  write: Define whether an attribute or model can be written / changed or deleted
-    -  default: true
-    > Many to any attributes (attr[]) are defined as false as the default
+    - Default: ''
 
 -  default: Define the default value of an attribute
-   -  default(date): now
-   -  default(bool): false
+   -  Default(date): now
+   -  Default(bool): false
 
 -  empty: Define whether an attribute is null/blank or not
-    -  default: false
+    -  Default: false
+
+-  read: Define whether an attribute or model can be read
+   -  Default: true
+
+-  write: Define whether an attribute or model can be written / changed or deleted
+    -  Default: true
+    > Many to any attributes (attr[]) are defined as false as the default
+
+-   delete: Define the model behavior on delete
+    - Options:
+        - CASCADE: Delete the objects that have references to it 
+        - PROTECT: To delete it you will have to delete all objects that reference it
+        - EMPTY: Set objects that have reference to NULL (requires 'empty' of references)
+    - Default: CASCADE
 
 -  length: Define the maximum length of a string
-   > required for all string attributes
+   > Required for all string attributes
 
 -  options: Define the available options of an enum
-   > required for all enum attributes
+   > Required for all enum attributes
 
 
 ### Override metadata

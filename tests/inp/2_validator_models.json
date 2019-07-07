@@ -12,13 +12,14 @@
           "has": "0..*"
         },
         "read": true,
-        "write": false
+        "write": false,
+        "empty": false
       }
     ],
     "meta": {},
     "read": true,
     "write": true,
-    "empty": false,
+    "delete": "CASCADE",
     "group": ""
   },
   {
@@ -32,6 +33,7 @@
         "card": {},
         "read": true,
         "write": true,
+        "empty": false,
         "length": "256"
       },
       {
@@ -42,6 +44,7 @@
         "card": {},
         "read": true,
         "write": true,
+        "empty": false,
         "length": "512"
       },
       {
@@ -54,13 +57,14 @@
           "has": "1"
         },
         "read": true,
-        "write": false
+        "write": false,
+        "empty": false
       }
     ],
     "meta": {},
     "read": true,
     "write": true,
-    "empty": false,
+    "delete": "CASCADE",
     "group": ""
   },
   {
@@ -74,6 +78,7 @@
         "card": {},
         "read": true,
         "write": true,
+        "empty": false,
         "length": "256"
       },
       {
@@ -84,6 +89,7 @@
         "card": {},
         "read": true,
         "write": true,
+        "empty": false,
         "length": "512"
       },
       {
@@ -96,13 +102,14 @@
           "has": "0..*"
         },
         "read": true,
-        "write": true
+        "write": true,
+        "empty": false
       }
     ],
     "meta": {},
     "read": true,
     "write": true,
-    "empty": false,
+    "delete": "CASCADE",
     "group": ""
   },
   {
@@ -114,9 +121,10 @@
         "meta": {},
         "is_fk": false,
         "card": {},
-        "default": "now",
         "read": true,
-        "write": true
+        "write": true,
+        "empty": false,
+        "default": "now"
       },
       {
         "name": "type",
@@ -126,6 +134,7 @@
         "card": {},
         "read": true,
         "write": true,
+        "empty": false,
         "options": [
           "Friendship",
           "League",
@@ -142,7 +151,8 @@
           "has": "0..*"
         },
         "read": true,
-        "write": true
+        "write": true,
+        "empty": false
       },
       {
         "name": "visitor",
@@ -154,7 +164,8 @@
           "has": "0..*"
         },
         "read": true,
-        "write": true
+        "write": true,
+        "empty": false
       },
       {
         "name": "scores",
@@ -166,13 +177,14 @@
           "has": "1"
         },
         "read": true,
-        "write": false
+        "write": false,
+        "empty": false
       }
     ],
     "meta": {},
     "read": true,
     "write": true,
-    "empty": false,
+    "delete": "CASCADE",
     "group": ""
   },
   {
@@ -185,7 +197,8 @@
         "is_fk": false,
         "card": {},
         "read": true,
-        "write": true
+        "write": true,
+        "empty": false
       },
       {
         "name": "player",
@@ -197,7 +210,8 @@
           "has": "0..*"
         },
         "read": true,
-        "write": true
+        "write": true,
+        "empty": false
       },
       {
         "name": "match",
@@ -209,13 +223,14 @@
           "has": "0..*"
         },
         "read": true,
-        "write": true
+        "write": true,
+        "empty": false
       }
     ],
     "meta": {},
     "read": true,
     "write": true,
-    "empty": false,
+    "delete": "CASCADE",
     "group": ""
   }
 ]
