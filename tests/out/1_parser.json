@@ -13,13 +13,13 @@
         },
         "read": true,
         "write": false,
-        "empty": false
+        "empty": false,
+        "delete": "CASCADE"
       }
     ],
     "meta": {},
     "read": true,
     "write": true,
-    "delete": "CASCADE",
     "group": ""
   },
   {
@@ -30,10 +30,10 @@
         "type": "string",
         "meta": {},
         "is_fk": false,
-        "card": {},
         "read": true,
         "write": true,
         "empty": false,
+        "delete": "CASCADE",
         "length": "256"
       },
       {
@@ -41,10 +41,10 @@
         "type": "string",
         "meta": {},
         "is_fk": false,
-        "card": {},
         "read": true,
         "write": true,
         "empty": false,
+        "delete": "CASCADE",
         "length": "512"
       },
       {
@@ -58,13 +58,13 @@
         },
         "read": true,
         "write": false,
-        "empty": false
+        "empty": false,
+        "delete": "CASCADE"
       }
     ],
     "meta": {},
     "read": true,
     "write": true,
-    "delete": "CASCADE",
     "group": ""
   },
   {
@@ -75,10 +75,10 @@
         "type": "string",
         "meta": {},
         "is_fk": false,
-        "card": {},
         "read": true,
         "write": true,
         "empty": false,
+        "delete": "CASCADE",
         "length": "256"
       },
       {
@@ -86,10 +86,10 @@
         "type": "string",
         "meta": {},
         "is_fk": false,
-        "card": {},
         "read": true,
         "write": true,
         "empty": false,
+        "delete": "CASCADE",
         "length": "512"
       },
       {
@@ -103,13 +103,13 @@
         },
         "read": true,
         "write": true,
-        "empty": false
+        "empty": false,
+        "delete": "CASCADE"
       }
     ],
     "meta": {},
     "read": true,
     "write": true,
-    "delete": "CASCADE",
     "group": ""
   },
   {
@@ -120,10 +120,10 @@
         "type": "date",
         "meta": {},
         "is_fk": false,
-        "card": {},
         "read": true,
         "write": true,
         "empty": false,
+        "delete": "CASCADE",
         "default": "now"
       },
       {
@@ -131,10 +131,10 @@
         "type": "enum",
         "meta": {},
         "is_fk": false,
-        "card": {},
         "read": true,
         "write": true,
         "empty": false,
+        "delete": "CASCADE",
         "options": [
           "Friendship",
           "League",
@@ -152,7 +152,8 @@
         },
         "read": true,
         "write": true,
-        "empty": false
+        "empty": false,
+        "delete": "CASCADE"
       },
       {
         "name": "visitor",
@@ -165,7 +166,8 @@
         },
         "read": true,
         "write": true,
-        "empty": false
+        "empty": false,
+        "delete": "CASCADE"
       },
       {
         "name": "scores",
@@ -178,13 +180,13 @@
         },
         "read": true,
         "write": false,
-        "empty": false
+        "empty": false,
+        "delete": "CASCADE"
       }
     ],
     "meta": {},
     "read": true,
     "write": true,
-    "delete": "CASCADE",
     "group": ""
   },
   {
@@ -195,10 +197,10 @@
         "type": "int",
         "meta": {},
         "is_fk": false,
-        "card": {},
         "read": true,
         "write": true,
-        "empty": false
+        "empty": false,
+        "delete": "CASCADE"
       },
       {
         "name": "player",
@@ -211,7 +213,8 @@
         },
         "read": true,
         "write": true,
-        "empty": false
+        "empty": false,
+        "delete": "CASCADE"
       },
       {
         "name": "match",
@@ -224,13 +227,13 @@
         },
         "read": true,
         "write": true,
-        "empty": false
+        "empty": false,
+        "delete": "CASCADE"
       }
     ],
     "meta": {},
     "read": true,
     "write": true,
-    "delete": "CASCADE",
     "group": ""
   }
 ]

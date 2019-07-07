@@ -42,17 +42,14 @@ function parseFks(attr, relations)
       ref: c2,
       has: c1
     };
-  } else {
+  } else 
     attr.is_fk = false;
-    attr.card = {};
-  }
 }
 
 function parseDefModel(model)
 {
   model.read = true;
   model.write = true;
-  model.delete = "CASCADE"
   model.group = "";
 }
 
@@ -61,6 +58,7 @@ function parseDefAttr(attr)
    attr.read = true;
    attr.write = true;
    attr.empty = false;
+   attr.delete = "CASCADE"
 
   //Def Value
   let aType = attr.type.replace("[]", "");

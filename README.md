@@ -90,7 +90,7 @@ This are the keys (options) enabled by the extension
     -  Default: true
     > Many to any attributes (attr[]) are defined as false as the default
 
--   delete: Define the model behavior on delete
+-   delete: Define the behavior of a fk attribute on delete
     - Options:
         - CASCADE: Delete the objects that have references to it 
         - PROTECT: To delete it you will have to delete all objects that reference it
