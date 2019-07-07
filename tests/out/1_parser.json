@@ -18,12 +18,8 @@
     "meta": {},
     "read": true,
     "write": true,
-    "group": "",
-    "views": [
-      "list",
-      "details",
-      "form"
-    ]
+    "empty": false,
+    "group": ""
   },
   {
     "name": "team",
@@ -31,24 +27,22 @@
       {
         "name": "name",
         "type": "string",
-        "meta": {
-          "length": "256"
-        },
+        "meta": {},
         "is_fk": false,
         "card": {},
         "read": true,
-        "write": true
+        "write": true,
+        "length": "256"
       },
       {
         "name": "logo_url",
         "type": "string",
-        "meta": {
-          "length": "512"
-        },
+        "meta": {},
         "is_fk": false,
         "card": {},
         "read": true,
-        "write": true
+        "write": true,
+        "length": "512"
       },
       {
         "name": "players",
@@ -66,8 +60,8 @@
     "meta": {},
     "read": true,
     "write": true,
-    "group": "",
-    "views": []
+    "empty": false,
+    "group": ""
   },
   {
     "name": "player",
@@ -75,24 +69,22 @@
       {
         "name": "name",
         "type": "string",
-        "meta": {
-          "length": "256"
-        },
+        "meta": {},
         "is_fk": false,
         "card": {},
         "read": true,
-        "write": true
+        "write": true,
+        "length": "256"
       },
       {
         "name": "photo_url",
         "type": "string",
-        "meta": {
-          "length": "512"
-        },
+        "meta": {},
         "is_fk": false,
         "card": {},
         "read": true,
-        "write": true
+        "write": true,
+        "length": "512"
       },
       {
         "name": "team",
@@ -110,11 +102,8 @@
     "meta": {},
     "read": true,
     "write": true,
-    "group": "",
-    "views": [
-      "list",
-      "form"
-    ]
+    "empty": false,
+    "group": ""
   },
   {
     "name": "match",
@@ -184,11 +173,8 @@
     "meta": {},
     "read": true,
     "write": true,
-    "group": "",
-    "views": [
-      "list",
-      "details"
-    ]
+    "empty": false,
+    "group": ""
   },
   {
     "name": "score",
@@ -230,9 +216,7 @@
     "meta": {},
     "read": true,
     "write": true,
-    "group": "",
-    "views": [
-      "form"
-    ]
+    "empty": false,
+    "group": ""
   }
 ]

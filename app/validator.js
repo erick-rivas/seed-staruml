@@ -2,20 +2,16 @@ const c = require("./const");
 
 function validateAttrs(models)
 {
-  validViews = c.readOnlyViews.concat(c.writeOnlyViews);
   validTypes = c.nativeTypes;
 
   for (let model of models) {
     let mName = model.name;
     let attrs = model.attrs;
     if (model.meta == null)
-      return `Invalid model metadata<br/>${mName}<br/>Use format: <i>name:value</i>`
-
-    if (model.views != null) {
-      for (let view of model.views)
-        if (validViews.indexOf(view) == -1)
-          return `Invalid view<br/><b>${mName}</b> (${view})</b><br/>Valid views: <i>${validViews}</i>`
-    } else return `Invalid view group<br/><b>${mName}</b> (${view})</b><br/>Valid viewGroups <i>'all', 'read_only', 'write_only'</i>`
+      return `Invalid model metadata<br/><b>${mName}</b><br/>Use format: <i>name:value</i>`
+    if (Object.keys(model.meta).length > 0)
+      return `Invalid model metadata (${Object.keys(attr.meta)[0]})<br/><b>${mName}</b><br/><i>Check the valid keys in the README</i>`
+    else delete model.meta
 
     for (let attr of attrs) {
 
@@ -25,16 +21,19 @@ function validateAttrs(models)
 
       if (attr.meta == null)
         return `Invalid metadata<br/><b>${mName} - ${attr.name}</b><br/>Use format: <i>name:value</i>`
+      if (Object.keys(attr.meta).length > 0)
+        return `Invalid metadata (${Object.keys(attr.meta)[0]})<br/><b>${mName} - ${attr.name}</b><br/><i>Check the valid keys in the README</i>`
+      else delete attr.meta
 
       if (attr.type == "string") {
-        if (attr.meta.length == null)
+        if (attr.length == null)
           return `Include 'length' meta in string<br/><b>${mName} - ${attr.name}</b>`
-        if (Number.isNaN(parseInt(attr.meta.length)))
+        if (Number.isNaN(parseInt(attr.length)))
           return `Invalid 'length' meta in string<br/><b>${mName} - ${attr.name}</b><br/>Example: <i>length: 128</i>`
       }
 
       if (attr.type == "enum") {
-        if (!Array.isArray(attr.meta.options))
+        if (!Array.isArray(attr.options))
           return `Include 'options' meta in enum<br/><b>${mName} - ${attr.name}</b><br/>Example: <i>options:[b,c]</i>`
       }
 

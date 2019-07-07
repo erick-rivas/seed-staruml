@@ -13,7 +13,6 @@ function getData()
   const relations = data.relations;
   const result = parser.parse(models, relations);
   const errors = validator.validate(result, relations);
-
   if (errors) app.toast.error(errors);
   return !errors ? result : null;
 }

@@ -37,8 +37,6 @@ function parseFks(attr, relations)
   if (relations[mName][aType]) {
     let c1 = relations[aType][mName]
     let c2 = relations[mName][aType]
-    if (attr.meta.ref != null) c1 = attr.meta.ref
-    if (attr.meta.has != null) c2 = attr.meta.has;
     attr.is_fk = true;
     attr.card = {
       ref: c2,
@@ -54,30 +52,8 @@ function parseDefModel(model)
 {
   model.read = true;
   model.write = true;
+  model.empty = false;
   model.group = "";
-}
-
-function parseViews(model, relations)
-{
-  let meta = model.meta
-  let views = []
-  if (typeof meta.views === "string") {
-    if (meta.views == "all")
-      views = c.readOnlyViews.concat(c.writeOnlyViews);
-    else if (meta.views == "read_only")
-      views = c.readOnlyViews
-    else if (meta.views == "write_only")
-      views = c.writeOnlyViews
-    else
-      views = null
-    delete meta.views
-  }
-  if (Array.isArray(meta.views)) {
-    views = meta.views
-    delete meta.views
-  }
-
-  model.views = views
 }
 
 function parseDefAttr(attr)
@@ -118,19 +94,34 @@ function parseOverr(entity)
     delete metas.write;
   }
 
+  if (metas.empty != null) {
+    entity.empty = metas.empty == "true";
+    delete metas.empty;
+  }
+  
   if (metas.group != null) {
     entity.group = metas.group;
     delete metas.group;
   }
 
-  if (metas.card_ref != null) {
-    entity.card.ref = metas.card_ref;
-    delete metas.card_ref;
+  if (metas.length != null) {
+    entity.length = metas.length;
+    delete metas.length;
   }
 
-  if (metas.card_has != null) {
-    entity.card.has = metas.card_has;
-    delete metas.card_has;
+  if (metas.options != null) {
+    entity.options = metas.options;
+    delete metas.options;
+  }
+
+  if (metas.ref != null) {
+    entity.card.ref = metas.ref;
+    delete metas.ref;
+  }
+
+  if (metas.has != null) {
+    entity.card.has = metas.has;
+    delete metas.has;
   }
 
   return entity;
@@ -155,7 +146,6 @@ function parse(models, relations)
   models = walk(null, parseFks, models, relations);
   models = walk(null, parseDefAttr, models, relations);
   models = walk(parseDefModel, null, models, relations);
-  models = walk(parseViews, null, models, relations);
   models = walk(parseOverr, parseOverr, models, relations);
   return models;
 }

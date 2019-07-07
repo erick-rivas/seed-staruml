@@ -72,7 +72,7 @@ It must follow a json key format
 
 This are the keys (options) enabled by the extension
 
-- group: Define the model group.
+- group: Define a model group.
     - Usage: Customize folder structure
     - default: ''
 
@@ -83,16 +83,12 @@ This are the keys (options) enabled by the extension
     -  default: true
     > Many to any attributes (attr[]) are defined as false as the default
 
--  views: Define which views to render on the front-end platform. Ex. ReactJs
-   -  options:
-      -  all
-      -  read_only (list, details)
-      -  write_only (form)
-   -  default: all
-
 -  default: Define the default value of an attribute
    -  default(date): now
    -  default(bool): false
+
+-  empty: Define whether an attribute is null/blank or not
+    -  default: false
 
 -  length: Define the maximum length of a string
    > required for all string attributes

@@ -1,211 +1,221 @@
-[{
-  "name": "user",
-  "attrs": [{
-    "name": "teams",
-    "type": "team[]",
+[
+  {
+    "name": "user",
+    "attrs": [
+      {
+        "name": "teams",
+        "type": "team[]",
+        "meta": {},
+        "is_fk": true,
+        "card": {
+          "ref": "0..*",
+          "has": "0..*"
+        },
+        "read": true,
+        "write": false
+      }
+    ],
     "meta": {},
     "read": true,
-    "write": false,
-    "depth": 1,
-    "is_fk": true,
-    "card": {
-      "ref": "0..*",
-      "has": "0..*"
-    }
-  }],
-  "meta": {},
-  "views": [],
-  "read": true,
-  "write": true,
-  "depth": 1
-}, {
-  "name": "team",
-  "attrs": [{
-    "name": "name",
-    "type": "string",
-    "meta": {
-      "length": "256"
-    },
-    "read": true,
     "write": true,
-    "depth": 1,
-    "is_fk": false,
-    "card": {}
-  }, {
-    "name": "logo_url",
-    "type": "string",
-    "meta": {
-      "length": "512"
-    },
-    "read": true,
-    "write": true,
-    "depth": 1,
-    "is_fk": false,
-    "card": {}
-  }, {
-    "name": "players",
-    "type": "player[]",
-    "meta": {},
-    "read": true,
-    "write": false,
-    "depth": 1,
-    "is_fk": true,
-    "card": {
-      "ref": "0..*",
-      "has": "1"
-    }
-  }],
-  "meta": {},
-  "views": [],
-  "read": true,
-  "write": true,
-  "depth": 1
-}, {
-  "name": "player",
-  "attrs": [{
-    "name": "name",
-    "type": "string",
-    "meta": {
-      "length": "256"
-    },
-    "read": true,
-    "write": true,
-    "depth": 1,
-    "is_fk": false,
-    "card": {}
-  }, {
-    "name": "photo_url",
-    "type": "string",
-    "meta": {
-      "length": "512"
-    },
-    "read": true,
-    "write": true,
-    "depth": 1,
-    "is_fk": false,
-    "card": {}
-  }, {
+    "empty": false,
+    "group": ""
+  },
+  {
     "name": "team",
-    "type": "team",
+    "attrs": [
+      {
+        "name": "name",
+        "type": "string",
+        "meta": {},
+        "is_fk": false,
+        "card": {},
+        "read": true,
+        "write": true,
+        "length": "256"
+      },
+      {
+        "name": "logo_url",
+        "type": "string",
+        "meta": {},
+        "is_fk": false,
+        "card": {},
+        "read": true,
+        "write": true,
+        "length": "512"
+      },
+      {
+        "name": "players",
+        "type": "player[]",
+        "meta": {},
+        "is_fk": true,
+        "card": {
+          "ref": "0..*",
+          "has": "1"
+        },
+        "read": true,
+        "write": false
+      }
+    ],
     "meta": {},
     "read": true,
     "write": true,
-    "depth": 1,
-    "is_fk": true,
-    "card": {
-      "ref": "1",
-      "has": "0..*"
-    }
-  }],
-  "meta": {},
-  "views": [],
-  "read": true,
-  "write": true,
-  "depth": 1
-}, {
-  "name": "match",
-  "attrs": [{
-    "name": "date",
-    "type": "date",
-    "def": "now",
-    "meta": {},
-    "read": true,
-    "write": true,
-    "depth": 1,
-    "is_fk": false,
-    "card": {}
-  }, {
-    "name": "type",
-    "type": "enum",
-    "meta": {
-      "options": ["Friendship", "League", "Cup"]
-    },
-    "read": true,
-    "write": true,
-    "depth": 1,
-    "is_fk": false,
-    "card": {}
-  }, {
-    "name": "local",
-    "type": "team",
-    "meta": {},
-    "read": true,
-    "write": true,
-    "depth": 1,
-    "is_fk": true,
-    "card": {
-      "ref": "1",
-      "has": "0..*"
-    }
-  }, {
-    "name": "visitor",
-    "type": "team",
-    "meta": {},
-    "read": true,
-    "write": true,
-    "depth": 1,
-    "is_fk": true,
-    "card": {
-      "ref": "1",
-      "has": "0..*"
-    }
-  }, {
-    "name": "scores",
-    "type": "score[]",
-    "meta": {},
-    "read": true,
-    "write": false,
-    "depth": 1,
-    "is_fk": true,
-    "card": {
-      "ref": "0..*",
-      "has": "1"
-    }
-  }],
-  "meta": {},
-  "views": [],
-  "read": true,
-  "write": true,
-  "depth": 1
-}, {
-  "name": "score",
-  "attrs": [{
-    "name": "min",
-    "type": "int",
-    "meta": {},
-    "read": true,
-    "write": true,
-    "depth": 1,
-    "is_fk": false,
-    "card": {}
-  }, {
+    "empty": false,
+    "group": ""
+  },
+  {
     "name": "player",
-    "type": "player",
+    "attrs": [
+      {
+        "name": "name",
+        "type": "string",
+        "meta": {},
+        "is_fk": false,
+        "card": {},
+        "read": true,
+        "write": true,
+        "length": "256"
+      },
+      {
+        "name": "photo_url",
+        "type": "string",
+        "meta": {},
+        "is_fk": false,
+        "card": {},
+        "read": true,
+        "write": true,
+        "length": "512"
+      },
+      {
+        "name": "team",
+        "type": "team",
+        "meta": {},
+        "is_fk": true,
+        "card": {
+          "ref": "1",
+          "has": "0..*"
+        },
+        "read": true,
+        "write": true
+      }
+    ],
     "meta": {},
     "read": true,
     "write": true,
-    "depth": 1,
-    "is_fk": true,
-    "card": {
-      "ref": "1",
-      "has": "0..*"
-    }
-  }, {
+    "empty": false,
+    "group": ""
+  },
+  {
     "name": "match",
-    "type": "match",
+    "attrs": [
+      {
+        "name": "date",
+        "type": "date",
+        "meta": {},
+        "is_fk": false,
+        "card": {},
+        "default": "now",
+        "read": true,
+        "write": true
+      },
+      {
+        "name": "type",
+        "type": "enum",
+        "meta": {},
+        "is_fk": false,
+        "card": {},
+        "read": true,
+        "write": true,
+        "options": [
+          "Friendship",
+          "League",
+          "Cup"
+        ]
+      },
+      {
+        "name": "local",
+        "type": "team",
+        "meta": {},
+        "is_fk": true,
+        "card": {
+          "ref": "1",
+          "has": "0..*"
+        },
+        "read": true,
+        "write": true
+      },
+      {
+        "name": "visitor",
+        "type": "team",
+        "meta": {},
+        "is_fk": true,
+        "card": {
+          "ref": "1",
+          "has": "0..*"
+        },
+        "read": true,
+        "write": true
+      },
+      {
+        "name": "scores",
+        "type": "score[]",
+        "meta": {},
+        "is_fk": true,
+        "card": {
+          "ref": "0..*",
+          "has": "1"
+        },
+        "read": true,
+        "write": false
+      }
+    ],
     "meta": {},
     "read": true,
     "write": true,
-    "depth": 1,
-    "is_fk": true,
-    "card": {
-      "ref": "1",
-      "has": "0..*"
-    }
-  }],
-  "meta": {},
-  "views": [],
-  "read": true,
-  "write": true,
-  "depth": 1
-}]
+    "empty": false,
+    "group": ""
+  },
+  {
+    "name": "score",
+    "attrs": [
+      {
+        "name": "min",
+        "type": "int",
+        "meta": {},
+        "is_fk": false,
+        "card": {},
+        "read": true,
+        "write": true
+      },
+      {
+        "name": "player",
+        "type": "player",
+        "meta": {},
+        "is_fk": true,
+        "card": {
+          "ref": "1",
+          "has": "0..*"
+        },
+        "read": true,
+        "write": true
+      },
+      {
+        "name": "match",
+        "type": "match",
+        "meta": {},
+        "is_fk": true,
+        "card": {
+          "ref": "1",
+          "has": "0..*"
+        },
+        "read": true,
+        "write": true
+      }
+    ],
+    "meta": {},
+    "read": true,
+    "write": true,
+    "empty": false,
+    "group": ""
+  }
+]

@@ -5,7 +5,7 @@
     "type": "team[]",
     "meta": ""
   }],
-  "meta": "views: all"
+  "meta": ""
 }, {
   "name": "team",
   "attrs": [{
@@ -37,7 +37,7 @@
     "type": "team",
     "meta": ""
   }],
-  "meta": "views: [list, form]"
+  "meta": ""
 }, {
   "name": "match",
   "attrs": [{
@@ -61,7 +61,7 @@
     "type": "score[]",
     "meta": ""
   }],
-  "meta": "views: read_only"
+  "meta": ""
 }, {
   "name": "score",
   "attrs": [{
@@ -77,5 +77,5 @@
     "type": "match",
     "meta": ""
   }],
-  "meta": "views: write_only"
+  "meta": ""
 }]
