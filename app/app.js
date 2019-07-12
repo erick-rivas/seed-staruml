@@ -1,5 +1,4 @@
 const fs = require("fs");
-const yaml = require("json2yaml")
 const mapper = require("./mapper")
 const parser = require("./parser")
 const validator = require("./validator")
@@ -17,16 +16,16 @@ function getData()
   return !errors ? result : null;
 }
 
-function createYaml(data, name, platform)
+function createJSON(data, name, platform)
 {
-  const filters = [{ name: "Text Files", extensions: ["yaml"] }];
-  const selected = app.dialogs.showSaveDialog("Export in", "SeedManifest.yaml", filters);
+  const filters = [{ name: "Text Files", extensions: ["json"] }];
+  const selected = app.dialogs.showSaveDialog("Export in", "SeedManifest.json", filters);
   const result = {
     name: name,
     platform: platform,
     models: data
   }
-  fs.writeFileSync(selected, yaml.stringify(result));
+  fs.writeFileSync(selected, JSON.stringify(result, null, 2));
   app.toast.info("Exported in " + selected);
 }
 
@@ -40,7 +39,7 @@ function selectPlatform(data, name)
     .then(function ({ buttonId, returnValue })
     {
       if (buttonId === 'ok')
-        createYaml(data, name, returnValue)
+        createJSON(data, name, returnValue)
     })
 }
 
