@@ -42,7 +42,7 @@ function parseFks(attr, relations)
       ref: c2,
       has: c1
     };
-  } else 
+  } else
     attr.is_fk = false;
 }
 
@@ -55,10 +55,10 @@ function parseDefModel(model)
 
 function parseDefAttr(attr)
 {
-   attr.read = true;
-   attr.write = true;
-   attr.empty = false;
-   attr.delete = "CASCADE"
+  attr.read = true;
+  attr.write = true;
+  attr.empty = false;
+  attr.delete = "CASCADE"
 
   //Def Value
   let aType = attr.type.replace("[]", "");
@@ -72,7 +72,7 @@ function parseDefAttr(attr)
   if (def != null)
     attr.default = def
 
-  if (attr.is_fk && attr.card.ref == "0..*")
+  if (attr.is_fk && attr.card.ref == "0..*" && attr.card.has == "1")
     attr.write = false;
   if (attr.type == "image[]" || attr.type == "file[]")
     attr.write = false;

@@ -106,7 +106,7 @@ This are the keys (options) enabled by the extension
 
 -  write: Define whether an attribute or model can be written / changed or deleted
     -  Default: true
-    > Many to any attributes (attr[]) are defined as false as the default
+    > 0..* to 1 attributes are defined as false as the default
 
 -   delete: Define the behavior of a fk attribute on delete
     -  Options:

@@ -12,7 +12,7 @@
           "has": "0..*"
         },
         "read": true,
-        "write": false,
+        "write": true,
         "empty": false,
         "delete": "CASCADE"
       }
