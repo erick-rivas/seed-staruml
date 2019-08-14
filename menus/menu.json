@@ -2,9 +2,16 @@
   "menu": [{
     "id": "tools",
     "submenu": [{
-      "label": "Seed Builder",
-      "id": "tool.buildseed",
-      "command": "seed:build-seed"
-    }]
+        "type": "separator"
+      }, {
+        "label": "Build/Update Project",
+        "id": "tools.seedbuild",
+        "command": "seed:build"
+      },{
+        "label": "Generate Manifest",
+        "id": "tools.seedmanifest",
+        "command": "seed:manifest"
+      }
+    ]
   }]
 }
