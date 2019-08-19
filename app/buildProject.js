@@ -17,12 +17,11 @@ function runSeed(outDir)
   });
 }
 
-function createJSON(data, name, platform)
+function createJSON(data, platform)
 {
   const filters = [{ name: "Text Files", extensions: ["json"] }];
   const outDir = app.dialogs.showSaveDialog("Export in", "SeedManifest.json", filters);
   const result = {
-    name: name,
     platform: platform,
     models: data
   }
@@ -30,7 +29,7 @@ function createJSON(data, name, platform)
   runSeed(outDir)
 }
 
-function selectPlatform(data, name)
+function selectPlatform(data)
 {
   var options = [
     { text: "Django", value: "django" },
@@ -40,9 +39,11 @@ function selectPlatform(data, name)
     .then(function ({ buttonId, returnValue })
     {
       if (buttonId === 'ok') {
-        if (returnValue == null)
+        if (returnValue == null) {
+          selectPlatform(data);
           return app.toast.error("Select a platform");
-        createJSON(data, name, returnValue)
+        }
+        createJSON(data, returnValue)
       }
     })
 }
