@@ -43,6 +43,22 @@ function validateAttrs(models)
   return "";
 }
 
+function validateModels(models)
+{
+  function cap(str) 
+  {
+    return str.charAt(0).toUpperCase() + str.slice(1);
+  }
+
+  for (let m1 of models) {
+    let count = 0;
+    for (let m2 of models)
+      if (m1.name.toUpperCase() == m2.name.toUpperCase())
+        count++;
+    if (count > 1) return `Duplicate model <b>${cap(m1.name)}</b><br/>Fix: <i>Go to Model Explorer and 'delete from model' extra model</i>`
+  }
+}
+
 function validateFks(models, relations)
 {
 
@@ -118,6 +134,7 @@ function validate(models, relations)
 {
   let errors = "";
   errors = errors == "" ? validateAttrs(models) : errors;
+  errors = errors == "" ? validateModels(models) : errors;
   errors = errors == "" ? validateFks(models, relations) : errors;
   return errors;
 }
