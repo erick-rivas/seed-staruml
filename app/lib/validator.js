@@ -8,7 +8,7 @@ function validateAttrs(models)
     if (model.meta == null)
       return `Invalid model metadata<br/><b>${mName}</b><br/>Use format: <i>name:value</i>`
     if (Object.keys(model.meta).length > 0)
-      return `Invalid model metadata (${Object.keys(attr.meta)[0]})<br/><b>${mName}</b><br/><i>Check the valid keys in the README</i>`
+      return `Invalid model metadata (${Object.keys(model.meta)[0]})<br/><b>${mName}</b><br/><i>Check the valid keys in the README</i>`
     else delete model.meta
 
     for (let attr of attrs) {

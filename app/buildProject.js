@@ -1,20 +1,12 @@
-const exec = require("child_process").exec;
+const seed = require("seed-builder");
 const fs = require("fs");
 
 function runSeed(outDir)
 {
-  let dir = __dirname.replace(/ /g, "\\ ");
-  let command = `${dir}/bin/seed -i ${outDir}`
-  exec(command, (error, stdout) =>
-  {
-    if (error) {
-      app.toast.error(error);
-      return;
-    }
-    let lines = stdout.split("\n");
-    app.toast.info(lines.slice(0, lines.length - 4).join("<br/>"));
-    app.toast.info(lines[lines.length - 3]);
-  });
+  let res = seed.build(outDir)
+  let lines = res.split("\n");
+  app.toast.info(lines.slice(0, lines.length - 4).join("<br/>"));
+  app.toast.info(lines[lines.length - 3]);
 }
 
 function createJSON(data, platform)
@@ -56,7 +48,7 @@ function build()
     if (typeof data === 'string' || data instanceof String)
       return app.toast.error(data);
     selectPlatform(data);
-  } catch (error) { app.toast.error(error); }
+  } catch (error) { app.toast.error(error.stack); }
 }
 
 exports.build = build;
