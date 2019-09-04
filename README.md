@@ -90,10 +90,6 @@ It must follow a json key format
 
 This are the keys (options) enabled by the extension
 
-- group: Define a model group.
-    - Usage: Customize folder structure
-    - Default: ''
-
 -  default: Define the default value of an attribute
    -  Default(date): now
    -  Default(bool): false

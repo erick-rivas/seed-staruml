@@ -19,8 +19,7 @@
     ],
     "meta": {},
     "read": true,
-    "write": true,
-    "group": ""
+    "write": true
   },
   {
     "name": "team",
@@ -64,8 +63,7 @@
     ],
     "meta": {},
     "read": true,
-    "write": true,
-    "group": ""
+    "write": true
   },
   {
     "name": "player",
@@ -109,8 +107,7 @@
     ],
     "meta": {},
     "read": true,
-    "write": true,
-    "group": ""
+    "write": true
   },
   {
     "name": "match",
@@ -186,8 +183,7 @@
     ],
     "meta": {},
     "read": true,
-    "write": true,
-    "group": ""
+    "write": true
   },
   {
     "name": "score",
@@ -233,7 +229,6 @@
     ],
     "meta": {},
     "read": true,
-    "write": true,
-    "group": ""
+    "write": true
   }
 ]

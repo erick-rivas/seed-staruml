@@ -48,7 +48,6 @@ function parseDefModel(model)
 {
   model.read = true;
   model.write = true;
-  model.group = "";
 }
 
 function parseDefAttr(attr)
@@ -115,11 +114,6 @@ function parseOverr(entity)
     (metas.delete == "CASCADE" || metas.delete == "PROTECT" || metas.delete == "EMPTY")) {
     entity.card.delete = metas.delete;
     delete metas.delete;
-  }
-
-  if (metas.group != null) {
-    entity.group = metas.group;
-    delete metas.group;
   }
 
   if (metas.length != null) {

@@ -8,6 +8,6 @@ executor.exec((models, relations) =>
 {
   res = validator.validate(models, relations)
   return {
-    res: res
+    res: res == "" || res == null ? "-" : res 
   }
 }, ins, out)
