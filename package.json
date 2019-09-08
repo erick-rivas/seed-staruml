@@ -8,6 +8,6 @@
     "staruml": ">=3.0.0"
   },
   "dependencies": {
-    "seed-builder": "0.0.3"
+    "seed-builder": "0.0.4"
   }
 }

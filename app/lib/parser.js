@@ -40,23 +40,11 @@ function parseFks(attr, relations)
       ref: c2,
       has: c1
     };
-  } else
-    attr.is_fk = false;
-}
-
-function parseDefModel(model)
-{
-  model.read = true;
-  model.write = true;
+  }
 }
 
 function parseDefAttr(attr)
 {
-  attr.read = true;
-  attr.write = true;
-  attr.empty = false;
-  attr.delete = "CASCADE"
-
   //Def Value
   let aType = attr.type.replace("[]", "");
   let def = null;
@@ -147,7 +135,6 @@ function parse(models, relations)
   models = walk(parseMeta, parseMeta, models, relations);
   models = walk(null, parseFks, models, relations);
   models = walk(null, parseDefAttr, models, relations);
-  models = walk(parseDefModel, null, models, relations);
   models = walk(parseOverr, parseOverr, models, relations);
   return models;
 }
