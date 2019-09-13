@@ -3,12 +3,12 @@ function getModels(dModels)
   let models = []
   for (let model of dModels) {
     let modelName = stdName(model.name);
-    let modelMeta = model.documentation;
+    let modelMeta = model.documentation.trim();
     let attrs = [];
     for (let attr of model.columns) {
       let name = stdName(attr.name);
       let type = stdName(attr.type);
-      let meta = attr.documentation;
+      let meta = attr.documentation.trim();
       attrs.push({
         name: name,
         type: type,
