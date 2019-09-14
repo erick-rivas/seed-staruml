@@ -21,8 +21,13 @@ function selectPlatform(data)
   app.dialogs.showSelectRadioDialog("Select a platform.", options)
     .then(function ({ buttonId, returnValue })
     {
-      if (buttonId === 'ok') 
+      if (buttonId === 'ok') {
+        if (returnValue == null) {
+          selectPlatform(data);
+          return app.toast.error("Select a platform");
+        }
         createJSON(data, returnValue)
+      }
     })
 }
 

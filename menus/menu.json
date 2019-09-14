@@ -3,18 +3,10 @@
     "id": "tools",
     "submenu": [{
       "type": "separator"
-    }, {
-      "label": "Build/Update Project",
-      "id": "tools.seedbuild",
-      "command": "seed:build"
-    }, {
-      "label": "Export Project Modules",
-      "id": "tools.seedexport",
-      "command": "seed:export"
-    }, {
-      "label": "Generate Manifest",
-      "id": "tools.seedmanifest",
-      "command": "seed:manifest"
+    },{
+      "label": "Generate SeedManifest 🌱",
+      "id": "tools.generatemanifest",
+      "command": "seed:generate"
     }]
   }]
 }

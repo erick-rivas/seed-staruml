@@ -33,12 +33,7 @@ This extension and the manifest in general focuses on the structure of models, r
    -  Windows: C:\\Users\\\AppData\\Roaming\\StarUML\\extensions\\user
    -  Linux: ~/.config/StarUML/extensions/user 
 
--  Install dependencies
-```bash
-$ npm install
-```
-
--  Open staruml and run extension in tools > SeedBuilder
+-  Open staruml and run extension in tools
 
 ## Extension usage
 
