@@ -114,6 +114,11 @@ function parseOverr(entity)
     delete metas.options;
   }
 
+  if (metas.description != null) {
+    entity.description = metas.description;
+    delete metas.description;
+  }
+
   return entity;
 }
 

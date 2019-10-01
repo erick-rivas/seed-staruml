@@ -112,6 +112,8 @@ This are the keys (options) enabled by the extension
 -  options: Define the available options of an enum
    > Required for all enum attributes
 
+-  description: Define the description of the model or attribute to show in documentation
+
 
 ### Override metadata
 
