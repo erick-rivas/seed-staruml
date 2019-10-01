@@ -7,6 +7,10 @@
       "label": "Generate SeedManifest 🌱",
       "id": "tools.generatemanifest",
       "command": "seed:generate"
+    },{
+      "label": "Update extension (git)",
+      "id": "tools.updateVersion",
+      "command": "seed:update"
     }]
   }]
 }
