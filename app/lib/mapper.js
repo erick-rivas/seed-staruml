@@ -9,6 +9,11 @@ function getModels(dModels)
       let name = stdName(attr.name);
       let type = stdName(attr.type);
       let meta = attr.documentation.trim();
+      let length = attr.length;
+      let nullable = attr.nullable;
+      if (length > 0) meta += "length: " + length + "\n";
+      if (nullable == true) meta += "empty: true\n";
+      meta = meta.trim()
       attrs.push({
         name: name,
         type: type,

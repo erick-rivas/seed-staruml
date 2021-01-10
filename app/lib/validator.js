@@ -1,6 +1,6 @@
 function validateAttrs(models)
 {
-  let validTypes = ["int", "string", "date", "boolean", "float", "enum", "text", "image", "file", "image[]", "file[]"];
+  let validTypes = ["int", "string", "date", "json", "boolean", "float", "enum", "text", "image", "file", "image[]", "file[]"];
 
   for (let model of models) {
     let mName = model.name;
