@@ -1,7 +1,7 @@
 {
 	"_type": "Project",
 	"_id": "AAAAAAFF+h6SjaM2Hec=",
-	"name": "reference",
+	"name": "example",
 	"ownedElements": [
 		{
 			"_type": "ERDDataModel",
@@ -1387,9 +1387,8 @@
 								"$ref": "AAAAAAFp1c6hRb8q0MQ="
 							},
 							"name": "name",
-							"type": "string",
-							"length": "256",
-							"nullable": true
+							"documentation": "length: 512",
+							"type": "string"
 						},
 						{
 							"_type": "ERDColumn",
