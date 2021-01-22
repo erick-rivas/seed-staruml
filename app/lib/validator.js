@@ -13,7 +13,7 @@ function validateAttrs(models)
 
     for (let attr of attrs) {
 
-      if (attr.is_fk == false &&
+      if (!attr.is_fk &&
         validTypes.indexOf(attr.type) == -1)
         return `Invalid type or missing relation<br/><b>${mName} - ${attr.name}</b> (${attr.type})<br/>Valid types: <i>${validTypes}</i>`
 
