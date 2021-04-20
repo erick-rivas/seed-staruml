@@ -119,6 +119,17 @@ function parseOverr(entity)
     delete metas.description;
   }
 
+  if (metas.db_table != null) {
+    entity.db_table = metas.db_table;
+    delete metas.db_table;
+  }
+
+  if (metas.managed != null &&
+    (metas.managed == "true" || metas.managed == "false")) {
+    entity.managed = metas.managed == "true";
+    delete metas.managed;
+  }
+
   return entity;
 }
 
