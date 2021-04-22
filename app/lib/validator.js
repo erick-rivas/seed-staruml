@@ -57,6 +57,7 @@ function validateModels(models)
         count++;
     if (count > 1) return `Duplicate model <b>${cap(m1.name)}</b><br/>Fix: <i>Go to Model Explorer and 'delete from model' extra model</i>`
   }
+  return ""
 }
 
 function validateFks(models, relations)
@@ -123,7 +124,7 @@ function validateFks(models, relations)
 
 
 
-      if (relations[r1][r2] == "duplicated")
+      if (relations[r1][r2] == "duplicated" || relations[r2][r1] == "duplicated")
         return `Double relation definition<br/><b>${cap(r1)} > ${cap(r2)}</b><br/>Fix: <i>'Delete from model' extra relations</i><br/><i>To set different cardinalities use fk override in metadata (see README)</i>`
     }
   }
