@@ -8,7 +8,7 @@ The seed staruml extension is a plugin to facilitate the creation of SeedManifes
 -   Clone this repository in the folder:
 
     -   MacOS: ~/Library/Application Support/StarUML/extensions/user
-    -   Windows: C:\\Users\\\AppData\\Roaming\\StarUML\\extensions\\user
+    -   Windows: C:\\Users\\$USER\\AppData\\Roaming\\StarUML\\extensions\\user
     -   Linux: ~/.config/StarUML/extensions/user 
 
 
@@ -101,7 +101,10 @@ Example \
     -   Default: CASCADE
 
 -   db_table: Define the database table name of a entity
--   managed: Define if a entity is managed by framework
+-   managed: Define if a entity is managed by a different framework
+    -   Options:
+        -   POSTGRESQL: Generic postgresql database
+        -   RAILS: Ruby on Rails framework
 -   description: Define the description of an entity to show in documentation
 
 
@@ -117,8 +120,6 @@ Example \
     -   Usage: Use it when there are two fk with different cardinality
     -   Values: 1 | 0..*
     -   Default: Graphic cardinality
-
-
 
 
 ## Common errors

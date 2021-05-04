@@ -125,8 +125,8 @@ function parseOverr(entity)
   }
 
   if (metas.managed != null &&
-    (metas.managed == "true" || metas.managed == "false")) {
-    entity.managed = metas.managed == "true";
+    (metas.managed == "RAILS" || metas.managed == "POSTGRESQL")) {
+    entity.managed = metas.managed;
     delete metas.managed;
   }
 
