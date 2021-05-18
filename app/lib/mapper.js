@@ -11,8 +11,8 @@ function getModels(dModels)
       let meta = attr.documentation.trim();
       let length = attr.length;
       let nullable = attr.nullable;
-      if (length > 0) meta += "length: " + length + "\n";
-      if (nullable == true) meta += "empty: true\n";
+      if (length > 0) meta += "\nlength: " + length;
+      if (nullable == true) meta += "\nempty: true";
       meta = meta.trim()
       attrs.push({
         name: name,
