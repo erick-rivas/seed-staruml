@@ -4,16 +4,14 @@ function parseMeta(entity)
   let res = null
   if (meta != "") {
     try {
-      let metaJson = ""
+      let metaJson = {}
       let props = meta.split("\n");
       for (let p of props) {
-        metaJson +=
-          `"${String(p.split(":")[0]).trim()}":` +
-          `"${String(p.split(":")[1]).trim()}",`
+        let key = String(p.split(":")[0]).trim();
+        let value = String(p.split(":").slice(1).join(":")).trim();
+        metaJson[key] = value;
       }
-      if (metaJson.endsWith(","))
-        metaJson = metaJson.substring(0, metaJson.length - 1);
-      res = JSON.parse(`{${metaJson}}`);
+      res = metaJson
       for (let m in res) {
         if (res[m].startsWith("[")) {
           let mrss = res[m].substring(1, res[m].length - 1)
@@ -129,6 +127,17 @@ function parseOverr(entity)
     entity.managed = metas.managed;
     delete metas.managed;
   }
+
+  if (metas.schema != null) {
+    entity.schema = metas.schema;
+    delete metas.schema;
+  }
+
+  if (metas.format != null) {
+    entity.format = metas.format;
+    delete metas.format;
+  }
+
 
   return entity;
 }
